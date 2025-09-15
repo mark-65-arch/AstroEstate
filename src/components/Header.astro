@@ -10,13 +10,17 @@ const translations = {
     home: 'Home',
     services: 'Services', 
     contact: 'Contact',
-    language: 'Español'
+    language: 'Español',
+    phone: '(713) 903-7178',
+    email: 'mrsoldtx@gmail.com'
   },
   es: {
     home: 'Inicio',
     services: 'Servicios',
     contact: 'Contacto',
-    language: 'English'
+    language: 'English',
+    phone: '(713) 903-7178',
+    email: 'mrsoldtx@gmail.com'
   }
 };
 
@@ -30,8 +34,15 @@ const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : cu
     <div class="flex justify-between items-center py-4 transition-all duration-300" id="nav-content">
       <!-- Logo -->
       <div class="flex items-center">
-        <a href={lang === 'en' ? '/en' : '/es'} class="text-2xl font-bold text-white transition-colors duration-300" id="logo">
-          RealEstate Pro
+        <a href={lang === 'en' ? '/en' : '/es'} class="flex items-center space-x-3 transition-colors duration-300" id="logo">
+          <!-- Logo Placeholder -->
+          <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-sm">MS</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-bold text-white">Mr. Sold Real Estate</span>
+            <span class="text-xs text-white/80 font-normal">L.L.C.</span>
+          </div>
         </a>
       </div>
       
@@ -42,6 +53,18 @@ const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : cu
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
+      </div>
+
+      <!-- Contact Info (Desktop Only) -->
+      <div class="hidden lg:flex items-center space-x-6 text-white/90 text-sm">
+        <a href="tel:713-903-7178" class="hover:text-white transition-colors flex items-center space-x-1">
+          <span>📞</span>
+          <span>{t.phone}</span>
+        </a>
+        <a href="mailto:mrsoldtx@gmail.com" class="hover:text-white transition-colors flex items-center space-x-1">
+          <span>✉️</span>
+          <span>{t.email}</span>
+        </a>
       </div>
 
       <!-- Desktop Navigation Links -->
@@ -105,13 +128,13 @@ const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : cu
           
           // Update language switcher
           if (langSwitcher) {
-            langSwitcher.className = 'bg-teal-100 hover:bg-teal-200 text-teal-700 font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-sm';
+            langSwitcher.className = 'bg-primary hover:opacity-90 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-sm';
           }
         } else {
           header.classList.remove('navbar-solid');
           header.classList.add('navbar-transparent');
           
-          // Update language switcher
+          // Update language switcher  
           if (langSwitcher) {
             langSwitcher.className = 'bg-white/20 hover:bg-white/30 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-sm backdrop-blur-sm';
           }

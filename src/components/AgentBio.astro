@@ -1,0 +1,174 @@
+---
+export interface Props {
+  lang: 'en' | 'es';
+}
+
+const { lang } = Astro.props;
+
+const translations = {
+  en: {
+    title: 'Meet Your Agent',
+    agent_name: 'Enrique "MR. SOLD" Escobar',
+    experience: '17 years experience',
+    sales_volume: '$150 M+ in sales',
+    specialty: 'Luxury Home Specialist',
+    languages_spoken: 'Languages Spoken',
+    languages: ['EN', 'ES', 'RU', 'HI'],
+    affiliations: 'Professional Affiliations',
+    license: 'TREC License',
+    license_number: '9008299',
+    broker: 'Broker: Kari A King',
+    broker_license: '(573857)',
+    contact_agent: 'Contact Agent Direct',
+    phone: '(713) 903-7178',
+    email: 'mrsoldtx@gmail.com',
+    bio_text: 'With 17 years of experience and over $150 million in sales, Enrique "MR. SOLD" Escobar specializes in luxury homes throughout the Houston area. His multilingual expertise and deep local knowledge make him the perfect choice for buyers and sellers seeking exceptional service.',
+    why_choose: 'Why Choose Mr. Sold?',
+    reasons: [
+      'Bilingual service in English & Español',
+      'Luxury home specialization',  
+      '17+ years of local expertise',
+      'Proven track record: $150M+ in sales',
+      'Professional affiliations: HAR, TAR, NAR'
+    ]
+  },
+  es: {
+    title: 'Conozca a Su Agente',
+    agent_name: 'Enrique "MR. SOLD" Escobar',
+    experience: '17 años de experiencia',
+    sales_volume: '$150 M+ en ventas',
+    specialty: 'Especialista en Casas de Lujo',
+    languages_spoken: 'Idiomas Hablados',
+    languages: ['EN', 'ES', 'RU', 'HI'],
+    affiliations: 'Afiliaciones Profesionales',
+    license: 'Licencia TREC',
+    license_number: '9008299',
+    broker: 'Corredor: Kari A King',
+    broker_license: '(573857)',
+    contact_agent: 'Contactar Agente Directamente',
+    phone: '(713) 903-7178',
+    email: 'mrsoldtx@gmail.com',
+    bio_text: 'Con 17 años de experiencia y más de $150 millones en ventas, Enrique "MR. SOLD" Escobar se especializa en casas de lujo en toda el área de Houston. Su experiencia multilingüe y conocimiento local profundo lo convierten en la elección perfecta para compradores y vendedores que buscan servicio excepcional.',
+    why_choose: '¿Por Qué Elegir Mr. Sold?',
+    reasons: [
+      'Servicio bilingüe en Inglés y Español',
+      'Especialización en casas de lujo',
+      '17+ años de experiencia local',
+      'Historial comprobado: $150M+ en ventas',
+      'Afiliaciones profesionales: HAR, TAR, NAR'
+    ]
+  }
+};
+
+const t = translations[lang];
+---
+
+<section class="section bg-white">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">{t.title}</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Agent Photo and Contact -->
+      <div class="text-center lg:text-left">
+        <!-- Agent Photo Placeholder -->
+        <div class="w-64 h-64 mx-auto lg:mx-0 mb-6 bg-gray-200 rounded-2xl flex items-center justify-center shadow-lg">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-2">
+              <span class="text-white text-2xl font-bold">ES</span>
+            </div>
+            <p class="text-gray-500 text-sm">Agent Photo</p>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-center lg:justify-start space-x-3">
+            <div class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center">
+              <span class="text-primary">📞</span>
+            </div>
+            <a href="tel:713-903-7178" class="text-primary hover:opacity-80 font-semibold text-lg">
+              {t.phone}
+            </a>
+          </div>
+          
+          <div class="flex items-center justify-center lg:justify-start space-x-3">
+            <div class="w-10 h-10 bg-primary-light rounded-full flex items-center justify-center">
+              <span class="text-primary">✉️</span>
+            </div>
+            <a href="mailto:mrsoldtx@gmail.com" class="text-primary hover:opacity-80 font-semibold">
+              {t.email}
+            </a>
+          </div>
+
+          <!-- Languages Spoken -->
+          <div class="mt-6">
+            <h4 class="font-semibold mb-3">{t.languages_spoken}:</h4>
+            <div class="flex justify-center lg:justify-start space-x-2">
+              {t.languages.map((lang_code) => (
+                <span class="px-3 py-1 bg-primary text-white rounded-full text-sm font-medium">
+                  {lang_code}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent Bio and Credentials -->
+      <div>
+        <div class="mb-6">
+          <h3 class="text-3xl font-bold mb-2 text-primary">{t.agent_name}</h3>
+          <div class="flex flex-wrap gap-4 text-lg mb-4">
+            <span class="px-4 py-2 bg-accent text-white rounded-lg font-medium">{t.experience}</span>
+            <span class="px-4 py-2 bg-accent text-white rounded-lg font-medium">{t.sales_volume}</span>
+            <span class="px-4 py-2 bg-accent text-white rounded-lg font-medium">{t.specialty}</span>
+          </div>
+        </div>
+
+        <p class="text-lg leading-relaxed mb-6">{t.bio_text}</p>
+
+        <!-- Why Choose Section -->
+        <div class="mb-6">
+          <h4 class="text-xl font-bold mb-4">{t.why_choose}</h4>
+          <ul class="space-y-2">
+            {t.reasons.map((reason) => (
+              <li class="flex items-center space-x-2">
+                <span class="text-accent text-lg">✓</span>
+                <span>{reason}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Professional Info -->
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <div class="space-y-2 text-sm">
+            <div>
+              <strong>{t.license}:</strong> #{t.license_number}
+            </div>
+            <div>
+              <strong>{t.broker}:</strong> {t.broker_license}
+            </div>
+            <div class="flex items-center space-x-4 mt-3">
+              <span class="font-semibold">{t.affiliations}:</span>
+              <div class="flex space-x-2">
+                <span class="px-2 py-1 bg-primary text-white rounded text-xs font-bold">HAR</span>
+                <span class="px-2 py-1 bg-primary text-white rounded text-xs font-bold">TAR</span>
+                <span class="px-2 py-1 bg-primary text-white rounded text-xs font-bold">NAR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-6">
+          <a href={lang === 'en' ? '/en/contact' : '/es/contact'} class="btn-primary btn-lg inline-block">
+            {t.contact_agent}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

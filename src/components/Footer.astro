@@ -7,9 +7,9 @@ const { lang } = Astro.props;
 
 const translations = {
   en: {
-    company: 'RealEstate Pro',
-    tagline: 'Your trusted partner in finding the perfect home',
-    description: 'Professional real estate services in Houston with over 15 years of experience. We help you buy, sell, and invest in properties with confidence.',
+    company: 'Mr. Sold Real Estate L.L.C.',
+    tagline: '17 years experience | $150M+ in sales | Luxury Home Specialist',
+    description: 'Enrique "MR. SOLD" Escobar provides exceptional bilingual real estate services throughout Houston. Expert in luxury homes with proven results.',
     quickLinks: 'Quick Links',
     contact: 'Contact Info',
     newsletter: 'Stay Updated',
@@ -27,16 +27,19 @@ const translations = {
     newsletterPlaceholder: 'Enter your email address',
     subscribe: 'Subscribe',
     copyright: 'All rights reserved',
-    phoneNumber: '+1 (713) 555-0123',
-    emailAddress: 'info@realestatepro.com',
-    officeAddress: '123 Main Street, Houston, TX 77002',
+    phoneNumber: '(713) 903-7178',
+    mainPhone: '713-534-9674', 
+    emailAddress: 'mrsoldtx@gmail.com',
+    officeAddress1: '17110 Cypress Glade Dr, Cypress, TX 77429',
+    officeAddress2: '17626 Belwood Park Ln, Cypress, TX 77433',
+    license: 'TREC License #9008299 | Broker: Kari A King (573857)',
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service'
   },
   es: {
-    company: 'RealEstate Pro',
-    tagline: 'Tu socio de confianza para encontrar el hogar perfecto',
-    description: 'Servicios profesionales de bienes raíces en Houston con más de 15 años de experiencia. Te ayudamos a comprar, vender e invertir en propiedades con confianza.',
+    company: 'Mr. Sold Real Estate L.L.C.',
+    tagline: '17 años de experiencia | $150M+ en ventas | Especialista en Casas de Lujo',
+    description: 'Enrique "MR. SOLD" Escobar brinda servicios excepcionales de bienes raíces bilingües en todo Houston. Experto en casas de lujo con resultados comprobados.',
     quickLinks: 'Enlaces Rápidos',
     contact: 'Información de Contacto',
     newsletter: 'Mantente Actualizado',
@@ -54,9 +57,12 @@ const translations = {
     newsletterPlaceholder: 'Ingresa tu correo electrónico',
     subscribe: 'Suscribirse',
     copyright: 'Todos los derechos reservados',
-    phoneNumber: '+1 (713) 555-0123',
-    emailAddress: 'info@realestatepro.com',
-    officeAddress: '123 Main Street, Houston, TX 77002',
+    phoneNumber: '(713) 903-7178',
+    mainPhone: '713-534-9674', 
+    emailAddress: 'mrsoldtx@gmail.com',
+    officeAddress1: '17110 Cypress Glade Dr, Cypress, TX 77429',
+    officeAddress2: '17626 Belwood Park Ln, Cypress, TX 77433',
+    license: 'TREC License #9008299 | Broker: Kari A King (573857)',
     privacyPolicy: 'Política de Privacidad',
     termsOfService: 'Términos de Servicio'
   }
@@ -74,8 +80,9 @@ const t = translations[lang];
       <div class="lg:col-span-1">
         <div class="mb-6">
           <h3 class="text-2xl font-bold text-white mb-3 font-heading">{t.company}</h3>
-          <p class="text-teal-300 text-lg font-semibold mb-4">{t.tagline}</p>
-          <p class="text-gray-300 leading-relaxed font-serif">{t.description}</p>
+          <p class="text-accent text-lg font-semibold mb-4">{t.tagline}</p>
+          <p class="text-gray-300 leading-relaxed font-serif mb-4">{t.description}</p>
+          <p class="text-sm text-gray-400">{t.license}</p>
         </div>
         
         <!-- Professional Certifications/Awards -->

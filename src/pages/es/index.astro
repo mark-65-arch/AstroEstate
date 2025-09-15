@@ -4,14 +4,15 @@ import HarIdxSearchWidget from '../../components/HarIdxSearchWidget.astro';
 import HarIdxFeaturedListings from '../../components/HarIdxFeaturedListings.astro';
 import TrustSocialProof from '../../components/TrustSocialProof.astro';
 import HarIdxLeadCapture from '../../components/HarIdxLeadCapture.astro';
+import AgentBio from '../../components/AgentBio.astro';
 
 const translations = {
   es: {
-    title: 'RealEstate Pro - Encuentra Tu Hogar Ideal',
-    description: 'Servicios profesionales de bienes raíces en inglés y español. Encuentra tu hogar perfecto con nuestros agentes expertos.',
+    title: 'Véndelo con Mr. Sold Real Estate - Houston TX',
+    description: 'Servicios bilingües de bienes raíces en Inglés y Español. 17+ años de experiencia, $150M+ en ventas. Especialista en Casas de Lujo sirviendo el área de Houston.',
     hero: {
-      title: 'Encuentra Tu Hogar Ideal',
-      subtitle: 'Servicios profesionales de bienes raíces con atención personalizada',
+      title: 'Véndelo con Mr. Sold Real Estate',
+      subtitle: 'Servicio Bilingüe en Inglés y Español',
       cta: 'Buscar Propiedades'
     },
     featured: {
@@ -34,8 +35,8 @@ const t = translations.es;
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
       <img 
-        src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-        alt="Hermoso vecindario de Houston con casas modernas"
+        src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+        alt="Residencias suburbanas de Houston - hermosas casas en el área de Houston"
         class="w-full h-full object-cover"
       />
       <!-- Gradient Overlay -->
@@ -72,6 +73,9 @@ const t = translations.es;
       </div>
     </div>
   </section>
+
+  <!-- Agent Bio Section -->
+  <AgentBio lang="es" />
 
   <!-- Property Search Widget Section -->
   <section id="search" class="section bg-white scroll-mt-24">

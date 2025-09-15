@@ -4,14 +4,15 @@ import HarIdxSearchWidget from '../../components/HarIdxSearchWidget.astro';
 import HarIdxFeaturedListings from '../../components/HarIdxFeaturedListings.astro';
 import TrustSocialProof from '../../components/TrustSocialProof.astro';
 import HarIdxLeadCapture from '../../components/HarIdxLeadCapture.astro';
+import AgentBio from '../../components/AgentBio.astro';
 
 const translations = {
   en: {
-    title: 'RealEstate Pro - Find Your Dream Home',
-    description: 'Professional real estate services in English and Spanish. Find your perfect home with our expert agents.',
+    title: 'Get It Sold with Mr. Sold Real Estate - Houston TX',
+    description: 'Bilingual real estate services in English & Español. 17+ years experience, $150M+ in sales. Luxury Home Specialist serving Houston area.',
     hero: {
-      title: 'Find Your Dream Home',
-      subtitle: 'Professional real estate services with personalized attention',
+      title: 'Get It Sold with Mr. Sold Real Estate',
+      subtitle: 'Bilingual Service in English & Español',
       cta: 'Search Properties'
     },
     featured: {
@@ -34,8 +35,8 @@ const t = translations.en;
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
       <img 
-        src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-        alt="Beautiful Houston neighborhood with modern homes"
+        src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+        alt="Suburban Houston residences - beautiful homes in Houston area"
         class="w-full h-full object-cover"
       />
       <!-- Gradient Overlay -->
@@ -72,6 +73,9 @@ const t = translations.en;
       </div>
     </div>
   </section>
+
+  <!-- Agent Bio Section -->
+  <AgentBio lang="en" />
 
   <!-- Property Search Widget Section -->
   <section id="search" class="section bg-white scroll-mt-24">

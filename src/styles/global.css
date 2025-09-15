@@ -4,32 +4,83 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Variables for Theme System */
+:root {
+  /* English Theme - Default Colors */
+  --color-primary: #0d9488; /* teal-600 */
+  --color-primary-hover: #0f766e; /* teal-700 */
+  --color-primary-light: #f0fdfa; /* teal-50 */
+  --color-accent: #0d9488; /* teal-600 */
+  --color-accent-light: #5eead4; /* teal-300 */
+  --color-navy: #1e293b; /* navy-800 */
+  --color-navy-dark: #0f172a; /* navy-900 */
+  --color-navy-light: #334155; /* navy-700 */
+  --color-secondary: #f8fafc; /* secondary-50 */
+}
+
+/* Spanish Theme Override */
+.theme-es {
+  --color-primary: #C8102E; /* Spanish Red */
+  --color-primary-hover: #a00d26; /* Darker Spanish Red */
+  --color-primary-light: #fef2f2; /* Light Red background */
+  --color-accent: #FFC20E; /* Spanish Yellow */
+  --color-accent-light: #0055A4; /* Spanish Blue */
+  --color-secondary: #F2F2F2; /* Spanish Light Gray */
+}
+
+/* English Theme Class (explicit) */
+.theme-en {
+  --color-primary: #0d9488;
+  --color-primary-hover: #0f766e;
+  --color-primary-light: #f0fdfa;
+  --color-accent: #0d9488;
+  --color-accent-light: #5eead4;
+  --color-navy: #1e293b;
+  --color-navy-dark: #0f172a;
+  --color-navy-light: #334155;
+  --color-secondary: #f8fafc;
+}
+
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
   }
   
   body {
-    @apply text-navy-800 bg-secondary-50 font-serif;
+    @apply font-serif;
+    color: var(--color-navy);
+    background-color: var(--color-secondary);
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold text-navy-900;
+    @apply font-heading font-bold;
+    color: var(--color-navy-dark);
   }
 }
 
 @layer components {
-  /* Button System */
+  /* Button System - Using CSS Variables */
   .btn-primary {
-    @apply bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+    background-color: var(--color-primary);
+    @apply text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
   }
   
   .btn-secondary {
-    @apply bg-gray-100 hover:bg-gray-200 text-navy-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-gray-200;
+    @apply bg-gray-100 hover:bg-gray-200 font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-gray-200;
+    color: var(--color-navy-light);
   }
   
   .btn-inverted {
-    @apply bg-white hover:bg-teal-50 text-teal-600 font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+    @apply bg-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+    color: var(--color-primary);
+  }
+  
+  .btn-inverted:hover {
+    background-color: var(--color-primary-light);
   }
   
   .btn-sm {
@@ -53,7 +104,7 @@
     @apply p-6;
   }
   
-  /* Section System */
+  /* Section System - Using CSS Variables */
   .section {
     @apply py-16;
   }
@@ -63,11 +114,13 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-navy-900 mb-4 font-heading;
+    @apply text-3xl md:text-4xl font-bold mb-4 font-heading;
+    color: var(--color-navy-dark);
   }
   
   .section-subtitle {
-    @apply text-lg text-navy-600 font-serif;
+    @apply text-lg font-serif;
+    color: var(--color-navy-light);
   }
   
   /* Layout Container */
@@ -82,6 +135,26 @@
   
   .hero-subtitle {
     @apply text-xl md:text-2xl mb-8 text-white/90 font-serif;
+  }
+  
+  .text-primary {
+    color: var(--color-primary);
+  }
+  
+  .text-accent {
+    color: var(--color-accent);
+  }
+  
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .bg-primary-light {
+    background-color: var(--color-primary-light);
+  }
+  
+  .border-primary {
+    border-color: var(--color-primary);
   }
   
   /* Navigation */
@@ -116,7 +189,7 @@
   
   .navbar-sticky.navbar-transparent .nav-link:hover,
   .navbar-sticky.navbar-transparent .mobile-nav-link:hover {
-    color: rgb(94 234 212); /* teal-300 */
+    color: var(--color-accent-light);
   }
   
   .navbar-sticky.navbar-solid .nav-link,
@@ -127,7 +200,7 @@
   
   .navbar-sticky.navbar-solid .nav-link:hover,
   .navbar-sticky.navbar-solid .mobile-nav-link:hover {
-    color: rgb(15 118 110); /* teal-700 */
+    color: var(--color-primary-hover);
   }
   
   .navbar-sticky.navbar-transparent [data-menu-button] {
@@ -136,7 +209,7 @@
   }
   
   .navbar-sticky.navbar-transparent [data-menu-button]:hover {
-    color: rgb(94 234 212); /* teal-300 */
+    color: var(--color-accent-light);
   }
   
   .navbar-sticky.navbar-solid [data-menu-button] {
@@ -145,7 +218,7 @@
   }
   
   .navbar-sticky.navbar-solid [data-menu-button]:hover {
-    color: rgb(15 118 110); /* teal-700 */
+    color: var(--color-primary-hover);
   }
   
   .navbar-sticky.navbar-transparent #mobile-menu {

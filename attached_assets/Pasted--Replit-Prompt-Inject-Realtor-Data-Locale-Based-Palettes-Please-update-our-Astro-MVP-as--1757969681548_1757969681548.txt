@@ -1,0 +1,63 @@
+### 🎯 Replit Prompt: Inject Realtor Data & Locale-Based Palettes
+
+Please update our Astro MVP as follows:
+
+1. Keep the existing English design, layout, and color palette exactly as is.
+
+2. **Realtor Details**  
+   - Company: “Mr. Sold Real Estate L.L.C.”  
+   - Logo placeholder in header (to swap later)  
+   - Office Addresses:  
+     • 17110 Cypress Glade Dr, Cypress, TX 77429  
+     • 17626 Belwood Park Ln, Cypress, TX 77433  
+   - Main Phone: 713-534-9674  
+   - Agent Direct: (713) 903-7178  
+   - Email: mrsoldtx@gmail.com  
+   - TREC License #: 9008299 | Broker: Kari A King (573857)  
+   - Agent Name: Enrique “MR. SOLD” Escobar  
+   - Bio: 17 years experience; $150 M+ in sales; Luxury Home Specialist  
+   - Languages: EN | ES | RU | HI  
+   - Affiliations: HAR | TAR | NAR
+
+3. **Hero Section Update**  
+   - Background: suburban Houston residences (replace city-street image)  
+   - Headline: “Get It Sold with Mr. Sold Real Estate”  
+   - Subheading: “Bilingual Service in English & Español”  
+   - Primary CTA: “Search Properties”
+
+4. **Agent Bio Block**  
+   - Photo placeholder + the bio above  
+   - Display language icons/text for EN, ES, RU, HI
+
+5. **Demo Search & Listings**  
+   - Static search form (Type, Price, Beds, Baths)  
+   - Responsive grid of 3 demo cards with placeholders
+
+6. **Trust & Proof**  
+   - “Why Choose Us” icons/text:  
+     • ★★★★★ Reviews (4.99/5)  
+     • Local Expertise  
+     • Bilingual Support  
+     • Luxury Homes Specialist  
+   - Testimonials slider: include Susel, Fernando, Diego quotes
+
+7. **Pages & Footer**  
+   - Services: Buying, Selling, CMA Request form (demo)  
+   - Contact: Addresses, phone, email, map placeholder, contact form  
+   - Footer: About, Quick Links, Contact, Social & Newsletter; include license # and HAR | TAR | NAR badges
+
+8. **Spanish-Locale Palette Override**  
+   - On Spanish routes, add `theme-es` to `<html>`  
+   - Define CSS vars or Tailwind overrides:  
+     • Primary Red #C8102E  
+     • Accent Yellow #FFC20E  
+     • Accent Blue #0055A4  
+     • Light Gray #F2F2F2  
+   - English routes keep the current palette with `theme-en`
+
+9. **Styling & Architecture**  
+   - Use Tailwind CSS for spacing, typography, responsiveness  
+   - Ensure all color classes (`bg-primary`, `text-accent`, etc.) reference CSS vars  
+   - Keep HAR widget placeholders ready for later swap-in  
+
+Populate copy in both English and Spanish. Language toggle should switch route **and** apply the correct palette class.  
