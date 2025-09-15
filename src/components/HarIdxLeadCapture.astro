@@ -1,5 +1,5 @@
 ---
-// HAR IDX Lead Capture Widget Component
+// Modern Contact/Lead Capture Component with Two-Column Layout
 export interface Props {
   lang: 'en' | 'es';
   type?: 'contact' | 'property-interest' | 'newsletter';
@@ -18,63 +18,126 @@ type FormTranslations = {
   priceRange?: string;
   location?: string;
   submit: string;
+  whatsappText: string;
+  whatsappCTA: string;
+  contactInfo: {
+    title: string;
+    address: string;
+    phone: string;
+    email: string;
+    hours: string;
+  };
 };
 
 const translations: Record<'en' | 'es', Record<'contact' | 'property-interest' | 'newsletter', FormTranslations>> = {
   en: {
     contact: {
       title: 'Get in Touch',
-      subtitle: 'Ready to find your dream home? Contact us today!',
+      subtitle: 'Ready to find your dream home? Contact us today and let our expert agents help you navigate the Houston real estate market.',
       name: 'Full Name',
       email: 'Email Address',
       phone: 'Phone Number',
       message: 'Tell us about your property needs',
-      submit: 'Send Message'
+      submit: 'Send Message',
+      whatsappText: 'Quick Response via WhatsApp',
+      whatsappCTA: 'Chat with Us',
+      contactInfo: {
+        title: 'Contact Information',
+        address: '123 Main Street, Houston, TX 77002',
+        phone: '+1 (713) 555-0123',
+        email: 'info@realestatepro.com',
+        hours: 'Mon-Fri: 8AM-6PM, Sat-Sun: 9AM-5PM'
+      }
     },
     'property-interest': {
       title: 'Property Interest Form',
-      subtitle: 'Let us know what you\'re looking for',
+      subtitle: 'Let us know what you\'re looking for and we\'ll find the perfect property for you.',
       name: 'Full Name',
       email: 'Email Address',
       phone: 'Phone Number',
       propertyType: 'Property Type',
       priceRange: 'Price Range',
       location: 'Preferred Location',
-      submit: 'Find My Property'
+      submit: 'Find My Property',
+      whatsappText: 'Quick Response via WhatsApp',
+      whatsappCTA: 'Chat with Us',
+      contactInfo: {
+        title: 'Contact Information',
+        address: '123 Main Street, Houston, TX 77002',
+        phone: '+1 (713) 555-0123',
+        email: 'info@realestatepro.com',
+        hours: 'Mon-Fri: 8AM-6PM, Sat-Sun: 9AM-5PM'
+      }
     },
     newsletter: {
       title: 'Stay Updated',
-      subtitle: 'Get the latest property listings and market insights',
+      subtitle: 'Get the latest property listings and market insights delivered to your inbox.',
       email: 'Email Address',
-      submit: 'Subscribe'
+      submit: 'Subscribe',
+      whatsappText: 'Quick Response via WhatsApp',
+      whatsappCTA: 'Chat with Us',
+      contactInfo: {
+        title: 'Contact Information',
+        address: '123 Main Street, Houston, TX 77002',
+        phone: '+1 (713) 555-0123',
+        email: 'info@realestatepro.com',
+        hours: 'Mon-Fri: 8AM-6PM, Sat-Sun: 9AM-5PM'
+      }
     }
   },
   es: {
     contact: {
       title: 'Ponte en Contacto',
-      subtitle: '¿Listo para encontrar tu hogar ideal? ¡Contáctanos hoy!',
+      subtitle: '¿Listo para encontrar tu hogar ideal? Contáctanos hoy y deja que nuestros agentes expertos te ayuden a navegar el mercado inmobiliario de Houston.',
       name: 'Nombre Completo',
       email: 'Correo Electrónico',
       phone: 'Número de Teléfono',
       message: 'Cuéntanos sobre tus necesidades inmobiliarias',
-      submit: 'Enviar Mensaje'
+      submit: 'Enviar Mensaje',
+      whatsappText: 'Respuesta Rápida por WhatsApp',
+      whatsappCTA: 'Chatear con Nosotros',
+      contactInfo: {
+        title: 'Información de Contacto',
+        address: '123 Main Street, Houston, TX 77002',
+        phone: '+1 (713) 555-0123',
+        email: 'info@realestatepro.com',
+        hours: 'Lun-Vie: 8AM-6PM, Sáb-Dom: 9AM-5PM'
+      }
     },
     'property-interest': {
       title: 'Formulario de Interés en Propiedades',
-      subtitle: 'Cuéntanos qué estás buscando',
+      subtitle: 'Cuéntanos qué estás buscando y encontraremos la propiedad perfecta para ti.',
       name: 'Nombre Completo',
       email: 'Correo Electrónico',
       phone: 'Número de Teléfono',
       propertyType: 'Tipo de Propiedad',
       priceRange: 'Rango de Precio',
       location: 'Ubicación Preferida',
-      submit: 'Encontrar Mi Propiedad'
+      submit: 'Encontrar Mi Propiedad',
+      whatsappText: 'Respuesta Rápida por WhatsApp',
+      whatsappCTA: 'Chatear con Nosotros',
+      contactInfo: {
+        title: 'Información de Contacto',
+        address: '123 Main Street, Houston, TX 77002',
+        phone: '+1 (713) 555-0123',
+        email: 'info@realestatepro.com',
+        hours: 'Lun-Vie: 8AM-6PM, Sáb-Dom: 9AM-5PM'
+      }
     },
     newsletter: {
       title: 'Mantente Actualizado',
-      subtitle: 'Recibe los últimos listados de propiedades e información del mercado',
+      subtitle: 'Recibe los últimos listados de propiedades e información del mercado en tu bandeja de entrada.',
       email: 'Correo Electrónico',
-      submit: 'Suscribirse'
+      submit: 'Suscribirse',
+      whatsappText: 'Respuesta Rápida por WhatsApp',
+      whatsappCTA: 'Chatear con Nosotros',
+      contactInfo: {
+        title: 'Información de Contacto',
+        address: '123 Main Street, Houston, TX 77002',
+        phone: '+1 (713) 555-0123',
+        email: 'info@realestatepro.com',
+        hours: 'Lun-Vie: 8AM-6PM, Sáb-Dom: 9AM-5PM'
+      }
     }
   }
 };
@@ -82,183 +145,357 @@ const translations: Record<'en' | 'es', Record<'contact' | 'property-interest' |
 const t = translations[lang][type];
 ---
 
-<div class="har-idx-lead-capture card card-padding">
-  <div class="text-center mb-6">
-    <h3 class="text-2xl font-bold text-secondary-900 mb-2">{t.title}</h3>
-    <p class="text-secondary-600">{t.subtitle}</p>
-  </div>
-
-  <form id="har-idx-lead-form" class="space-y-4">
-    {type !== 'newsletter' && (
-      <div>
-        <label class="block text-sm font-medium text-secondary-700 mb-2">
-          {t.name}
-        </label>
-        <input
-          type="text"
-          name="name"
-          required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-        />
+<div class="har-idx-lead-capture">
+  <!-- Two-Column Layout -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    
+    <!-- Left Column: Contact Form -->
+    <div class="contact-form-column">
+      <!-- Form Header -->
+      <div class="mb-8">
+        <h3 class="text-3xl font-bold text-navy-800 mb-4">{t.title}</h3>
+        <p class="text-lg text-gray-600 leading-relaxed">{t.subtitle}</p>
       </div>
-    )}
 
-    <div>
-      <label class="block text-sm font-medium text-secondary-700 mb-2">
-        {t.email}
-      </label>
-      <input
-        type="email"
-        name="email"
-        required
-        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-      />
+      <!-- Contact Form -->
+      <form id="har-idx-lead-form" class="space-y-6 bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+        {type !== 'newsletter' && (
+          <div>
+            <label class="block text-sm font-semibold text-navy-700 mb-2">
+              {t.name}
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 font-serif"
+              placeholder={t.name}
+            />
+          </div>
+        )}
+
+        <div>
+          <label class="block text-sm font-semibold text-navy-700 mb-2">
+            {t.email}
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 font-serif"
+            placeholder={t.email}
+          />
+        </div>
+
+        {type === 'contact' && (
+          <>
+            <div>
+              <label class="block text-sm font-semibold text-navy-700 mb-2">
+                {t.phone}
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 font-serif"
+                placeholder={t.phone}
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-navy-700 mb-2">
+                {t.message}
+              </label>
+              <textarea
+                rows="4"
+                name="message"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 font-serif resize-none"
+                placeholder={t.message}
+              ></textarea>
+            </div>
+          </>
+        )}
+
+        {type === 'property-interest' && (
+          <>
+            <div>
+              <label class="block text-sm font-semibold text-navy-700 mb-2">
+                {t.phone}
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 font-serif"
+                placeholder={t.phone}
+              />
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-navy-700 mb-2">
+                  {t.propertyType}
+                </label>
+                <select name="propertyType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 appearance-none bg-white font-serif">
+                  <option>Single Family</option>
+                  <option>Condo</option>
+                  <option>Townhouse</option>
+                  <option>Multi-Family</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-navy-700 mb-2">
+                  {t.priceRange}
+                </label>
+                <select name="priceRange" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 appearance-none bg-white font-serif">
+                  <option>Under $200K</option>
+                  <option>$200K - $400K</option>
+                  <option>$400K - $600K</option>
+                  <option>$600K+</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-navy-700 mb-2">
+                {t.location}
+              </label>
+              <input
+                type="text"
+                name="location"
+                placeholder="City, neighborhood, or ZIP code"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 font-serif"
+              />
+            </div>
+          </>
+        )}
+
+        <button type="submit" class="w-full btn-primary btn-lg py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+          {t.submit}
+        </button>
+
+        <!-- WhatsApp Quick Contact -->
+        <div class="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.017 2.017c-5.502 0-9.984 4.464-9.984 9.962 0 1.75.46 3.397 1.26 4.829L1.02 21.486c-.129.302-.064.653.172.888.144.144.335.22.532.22.12 0 .242-.028.356-.088l4.688-2.274c1.404.784 2.996 1.201 4.662 1.201 5.502 0 9.984-4.464 9.984-9.962s-4.482-9.962-9.984-9.962zm-4.664 14.123L5.94 17.48c.09-.044.16-.122.203-.213l.69-1.408c-.75-1.009-1.145-2.207-1.145-3.465 0-3.227 2.626-5.853 5.853-5.853s5.853 2.626 5.853 5.853-2.626 5.853-5.853 5.853c-1.258 0-2.457-.395-3.466-1.145L7.54 17.48z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-green-800">{t.whatsappText}</p>
+                <p class="text-xs text-green-600">Instant response guaranteed</p>
+              </div>
+            </div>
+            <a 
+              href="https://wa.me/17135550123?text=Hello! I'm interested in Houston real estate services."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-200 font-semibold text-sm"
+            >
+              {t.whatsappCTA}
+            </a>
+          </div>
+        </div>
+      </form>
     </div>
 
-    {type === 'contact' && (
-      <>
-        <div>
-          <label class="block text-sm font-medium text-secondary-700 mb-2">
-            {t.phone}
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-          />
-        </div>
-        <div>
-          <label class="block text-sm font-medium text-secondary-700 mb-2">
-            {t.message}
-          </label>
-          <textarea
-            rows="4"
-            name="message"
-            required
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-          ></textarea>
-        </div>
-      </>
-    )}
+    <!-- Right Column: Contact Info & Visual -->
+    <div class="contact-info-column">
+      <!-- Houston Skyline Image -->
+      <div class="mb-8 rounded-2xl overflow-hidden shadow-lg">
+        <img 
+          src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+          alt="Houston skyline and downtown area"
+          class="w-full h-64 object-cover"
+          loading="lazy"
+        />
+      </div>
 
-    {type === 'property-interest' && (
-      <>
-        <div>
-          <label class="block text-sm font-medium text-secondary-700 mb-2">
-            {t.phone}
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-          />
-        </div>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm font-medium text-secondary-700 mb-2">
-              {t.propertyType}
-            </label>
-            <select name="propertyType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
-              <option>Single Family</option>
-              <option>Condo</option>
-              <option>Townhouse</option>
-              <option>Multi-Family</option>
-            </select>
+      <!-- Contact Information Card -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+        <h4 class="text-2xl font-bold text-navy-800 mb-6">{t.contactInfo.title}</h4>
+        
+        <div class="space-y-4">
+          <!-- Address -->
+          <div class="flex items-start">
+            <div class="w-6 h-6 mt-1 mr-3 flex-shrink-0">
+              <svg class="w-6 h-6 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-navy-700">Address</p>
+              <p class="text-gray-600">{t.contactInfo.address}</p>
+            </div>
           </div>
-          <div>
-            <label class="block text-sm font-medium text-secondary-700 mb-2">
-              {t.priceRange}
-            </label>
-            <select name="priceRange" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
-              <option>Under $200K</option>
-              <option>$200K - $400K</option>
-              <option>$400K - $600K</option>
-              <option>$600K+</option>
-            </select>
+
+          <!-- Phone -->
+          <div class="flex items-start">
+            <div class="w-6 h-6 mt-1 mr-3 flex-shrink-0">
+              <svg class="w-6 h-6 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-navy-700">Phone</p>
+              <a href="tel:+17135550123" class="text-gray-600 hover:text-teal-600 transition-colors duration-200">
+                {t.contactInfo.phone}
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-start">
+            <div class="w-6 h-6 mt-1 mr-3 flex-shrink-0">
+              <svg class="w-6 h-6 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-navy-700">Email</p>
+              <a href="mailto:info@realestatepro.com" class="text-gray-600 hover:text-teal-600 transition-colors duration-200">
+                {t.contactInfo.email}
+              </a>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="flex items-start">
+            <div class="w-6 h-6 mt-1 mr-3 flex-shrink-0">
+              <svg class="w-6 h-6 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-navy-700">Hours</p>
+              <p class="text-gray-600">{t.contactInfo.hours}</p>
+            </div>
           </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium text-secondary-700 mb-2">
-            {t.location}
-          </label>
-          <input
-            type="text"
-            name="location"
-            placeholder="City, neighborhood, or ZIP code"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-          />
+
+        <!-- Google Maps Embed -->
+        <div class="mt-6">
+          <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.0736399674483!2d-95.36963968461657!3d29.761993681965855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c07c36421fdd%3A0xa06a97c5e31c7eb9!2sDowntown%20Houston%2C%20Houston%2C%20TX!5e0!3m2!1sen!2sus!4v1635454321234!5m2!1sen!2sus"
+              width="100%"
+              height="200"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="rounded-xl"
+              title="Houston Downtown Location Map"
+            ></iframe>
+          </div>
         </div>
-      </>
-    )}
+      </div>
+    </div>
+  </div>
 
-    <button type="submit" class="btn-primary w-full">
-      {t.submit}
-    </button>
-  </form>
-
-  <!-- HAR IDX Lead Capture Integration -->
-  <script>
-    // HAR IDX form submission handler
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('#har-idx-lead-form') as HTMLFormElement;
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Show loading state
-          const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-          if (!submitButton) return;
-          
-          const originalText = submitButton.textContent;
-          submitButton.textContent = 'Sending...';
-          submitButton.disabled = true;
-          
-          // Get form data
-          const formData = new FormData(form);
-          // Form data collected for potential API integration
-          console.log('Form data collected:', Object.fromEntries(formData.entries()));
-          
-          // Simulate API call for demo mode
-          setTimeout(() => {
-            // Show success message
-            const successDiv = document.createElement('div');
-            successDiv.className = 'p-4 bg-green-100 border border-green-300 rounded-lg text-green-800 mb-4';
-            successDiv.innerHTML = `
-              <div class="flex items-center">
-                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-                Thank you! We will contact you soon.
-              </div>
-            `;
-            
-            if (form.parentNode) {
-              form.parentNode.insertBefore(successDiv, form);
-            }
-            form.reset();
-            
-            // Reset button
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-            
-            // Remove success message after 5 seconds
-            setTimeout(() => {
-              if (successDiv.parentNode) {
-                successDiv.remove();
-              }
-            }, 5000);
-          }, 1000);
-        });
-      }
-    });
-  </script>
-  
-  <div class="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg text-xs">
-    <p class="text-purple-800 mb-1">
-      <strong>Demo Mode:</strong> Form submission is simulated for demonstration. Ready to integrate with your lead management system.
-    </p>
-    <p class="text-purple-600">
-      Type: {type} | Language: {lang} | Status: Demo Ready
-    </p>
+  <!-- Floating WhatsApp Button -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <a 
+      href="https://wa.me/17135550123?text=Hello! I'm interested in Houston real estate services."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-float bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 group relative"
+      aria-label="Chat with us on WhatsApp"
+    >
+      <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12.017 2.017c-5.502 0-9.984 4.464-9.984 9.962 0 1.75.46 3.397 1.26 4.829L1.02 21.486c-.129.302-.064.653.172.888.144.144.335.22.532.22.12 0 .242-.028.356-.088l4.688-2.274c1.404.784 2.996 1.201 4.662 1.201 5.502 0 9.984-4.464 9.984-9.962s-4.482-9.962-9.984-9.962zm-4.664 14.123L5.94 17.48c.09-.044.16-.122.203-.213l.69-1.408c-.75-1.009-1.145-2.207-1.145-3.465 0-3.227 2.626-5.853 5.853-5.853s5.853 2.626 5.853 5.853-2.626 5.853-5.853 5.853c-1.258 0-2.457-.395-3.466-1.145L7.54 17.48z"/>
+      </svg>
+      <!-- Pulse Animation -->
+      <div class="absolute inset-0 rounded-full bg-green-400 opacity-75 animate-ping"></div>
+    </a>
   </div>
 </div>
+
+<style>
+  .whatsapp-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .aspect-w-16 {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  }
+  
+  .aspect-w-16 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  // Enhanced form submission handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('#har-idx-lead-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (!submitButton) return;
+        
+        const originalText = submitButton.textContent;
+        submitButton.innerHTML = `
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Sending...
+        `;
+        submitButton.disabled = true;
+        
+        // Get form data
+        const formData = new FormData(form);
+        console.log('Form data collected:', Object.fromEntries(formData.entries()));
+        
+        // Simulate API call for demo mode
+        setTimeout(() => {
+          // Show success message
+          const successDiv = document.createElement('div');
+          successDiv.className = 'p-6 bg-green-50 border border-green-200 rounded-xl text-green-800 mb-6 shadow-lg';
+          successDiv.innerHTML = `
+            <div class="flex items-center">
+              <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg">Message Sent Successfully!</h4>
+                <p class="text-green-600">We'll contact you within 24 hours. Check your email for a confirmation.</p>
+              </div>
+            </div>
+          `;
+          
+          if (form.parentNode) {
+            form.parentNode.insertBefore(successDiv, form);
+          }
+          form.reset();
+          
+          // Reset button
+          submitButton.innerHTML = originalText;
+          submitButton.disabled = false;
+          
+          // Remove success message after 8 seconds
+          setTimeout(() => {
+            if (successDiv.parentNode) {
+              successDiv.remove();
+            }
+          }, 8000);
+        }, 1500);
+      });
+    }
+  });
+</script>
