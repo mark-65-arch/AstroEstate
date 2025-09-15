@@ -9,67 +9,159 @@ const { lang } = Astro.props;
 const translations = {
   en: {
     placeholder: 'Enter location, ZIP code, or MLS number...',
-    searchButton: 'Search Properties'
+    searchButton: 'Search Properties',
+    propertyType: 'Property Type',
+    priceRange: 'Price Range',
+    bedrooms: 'Bedrooms',
+    location: 'Location',
+    searchShort: 'Search',
+    anyType: 'Any Type',
+    anyPrice: 'Any Price',
+    anyBeds: 'Any Beds'
   },
   es: {
     placeholder: 'Ingrese ubicación, código postal o número MLS...',
-    searchButton: 'Buscar Propiedades'
+    searchButton: 'Buscar Propiedades',
+    propertyType: 'Tipo de Propiedad',
+    priceRange: 'Rango de Precio',
+    bedrooms: 'Habitaciones',
+    location: 'Ubicación',
+    searchShort: 'Buscar',
+    anyType: 'Cualquier Tipo',
+    anyPrice: 'Cualquier Precio',
+    anyBeds: 'Cualquier Cantidad'
   }
 };
 
 const t = translations[lang];
 ---
 
-<div class="har-idx-search-widget card card-padding">
-  <!-- Search Form -->
-  <form class="space-y-4 mb-6">
-    <div class="flex flex-col md:flex-row gap-4">
-      <div class="flex-1">
-        <input
-          type="text"
-          name="search"
-          placeholder={t.placeholder}
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-        />
+<div class="har-idx-search-widget">
+  <!-- Compact Search Card -->
+  <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 p-6 mb-8">
+    <form class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
+      <!-- Location Search -->
+      <div class="lg:col-span-4">
+        <label class="block text-sm font-semibold text-navy-700 mb-2">
+          📍 {t.location}
+        </label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            name="search"
+            placeholder={t.placeholder}
+            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 font-serif"
+          />
+        </div>
       </div>
-      <button type="submit" class="btn-primary whitespace-nowrap">
-        {t.searchButton}
-      </button>
-    </div>
-    
-    <!-- Quick Filters -->
-    <div class="flex flex-wrap gap-3 pt-2">
-      <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-        <option>Property Type</option>
-        <option>Single Family</option>
-        <option>Condo</option>
-        <option>Townhouse</option>
-      </select>
-      <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-        <option>Price Range</option>
-        <option>Under $200K</option>
-        <option>$200K - $400K</option>
-        <option>$400K - $600K</option>
-        <option>$600K+</option>
-      </select>
-      <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
-        <option>Bedrooms</option>
-        <option>1+</option>
-        <option>2+</option>
-        <option>3+</option>
-        <option>4+</option>
-      </select>
-    </div>
-  </form>
+      
+      <!-- Property Type -->
+      <div class="lg:col-span-2">
+        <label class="block text-sm font-semibold text-navy-700 mb-2">
+          🏠 {t.propertyType}
+        </label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+          </div>
+          <select class="w-full pl-10 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 appearance-none bg-white font-serif">
+            <option>{t.anyType}</option>
+            <option>Single Family</option>
+            <option>Condo</option>
+            <option>Townhouse</option>
+            <option>Multi-Family</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Price Range -->
+      <div class="lg:col-span-2">
+        <label class="block text-sm font-semibold text-navy-700 mb-2">
+          💰 {t.priceRange}
+        </label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <select class="w-full pl-10 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 appearance-none bg-white font-serif">
+            <option>{t.anyPrice}</option>
+            <option>Under $200K</option>
+            <option>$200K - $400K</option>
+            <option>$400K - $600K</option>
+            <option>$600K - $800K</option>
+            <option>$800K+</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bedrooms -->
+      <div class="lg:col-span-2">
+        <label class="block text-sm font-semibold text-navy-700 mb-2">
+          🛏️ {t.bedrooms}
+        </label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+            </svg>
+          </div>
+          <select class="w-full pl-10 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 appearance-none bg-white font-serif">
+            <option>{t.anyBeds}</option>
+            <option>1+</option>
+            <option>2+</option>
+            <option>3+</option>
+            <option>4+</option>
+            <option>5+</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Search Button -->
+      <div class="lg:col-span-2">
+        <button type="submit" class="w-full btn-primary py-3 px-6 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <span class="hidden sm:inline">{t.searchButton}</span>
+          <span class="sm:hidden">{t.searchShort}</span>
+        </button>
+      </div>
+    </form>
+  </div>
 
   <!-- HAR IDX Search Widget Integration -->
-  <div class="card">
+  <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
     <iframe 
       src={`https://www.har.com/widgets/search?account=DEMO&lang=${lang}&style=modern&demo=true`}
       width="100%"
       height="400"
       title={t.placeholder}
-      class="rounded-xl border-0"
+      class="border-0"
       style="min-height: 400px;">
     </iframe>
   </div>
