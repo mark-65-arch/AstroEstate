@@ -261,7 +261,7 @@ const t = translations[lang];
               <!-- Rating Stars -->
               <div class="flex items-center mb-4" aria-label={`${review.rating} out of 5 stars`}>
                 {Array.from({ length: review.rating }, (_, i) => (
-                  <svg key={i} class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
                 ))}
@@ -319,17 +319,20 @@ const t = translations[lang];
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.getElementById('testimonialSlider');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const pagination = document.getElementById('pagination');
+    const slider = document.getElementById('testimonialSlider') as HTMLElement;
+    const prevBtn = document.getElementById('prevBtn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
+    const pagination = document.getElementById('pagination') as HTMLElement;
+    
+    if (!slider || !prevBtn || !nextBtn || !pagination) return;
+    
     const dots = pagination.querySelectorAll('.pagination-dot');
     
     let currentSlide = 0;
     const totalSlides = dots.length;
     
     function updateSlider() {
-      const slideWidth = slider.children[0].offsetWidth + 32; // width + gap
+      const slideWidth = (slider.children[0] as HTMLElement).offsetWidth + 32; // width + gap
       slider.scrollTo({
         left: currentSlide * slideWidth,
         behavior: 'smooth'

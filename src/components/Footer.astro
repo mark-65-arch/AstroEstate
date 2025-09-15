@@ -264,14 +264,14 @@ const t = translations[lang];
 <script>
   // Newsletter subscription handler
   document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('#newsletter-form');
+    const form = document.querySelector('#newsletter-form') as HTMLFormElement;
     if (form) {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Get form elements
         const emailInput = form.querySelector('input[name="newsletter-email"]');
-        const submitButton = form.querySelector('button[type="submit"]');
+        const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
         
         if (!emailInput || !submitButton) return;
         

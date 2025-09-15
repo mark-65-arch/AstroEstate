@@ -437,13 +437,13 @@ const t = translations[lang][type];
 <script>
   // Enhanced form submission handler
   document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('#har-idx-lead-form');
+    const form = document.querySelector('#har-idx-lead-form') as HTMLFormElement;
     if (form) {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Show loading state
-        const submitButton = form.querySelector('button[type="submit"]');
+        const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
         if (!submitButton) return;
         
         const originalText = submitButton.textContent;
