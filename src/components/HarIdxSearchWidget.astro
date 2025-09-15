@@ -9,28 +9,27 @@ const { lang } = Astro.props;
 const translations = {
   en: {
     placeholder: 'Enter location, ZIP code, or MLS number...',
-    searchButton: 'Search Properties',
-    advancedSearch: 'Advanced Search Options'
+    searchButton: 'Search Properties'
   },
   es: {
     placeholder: 'Ingrese ubicación, código postal o número MLS...',
-    searchButton: 'Buscar Propiedades',
-    advancedSearch: 'Opciones de Búsqueda Avanzada'
+    searchButton: 'Buscar Propiedades'
   }
 };
 
 const t = translations[lang];
 ---
 
-<div class="har-idx-search-widget bg-white rounded-lg shadow-lg p-6">
+<div class="har-idx-search-widget card card-padding">
   <!-- Search Form -->
-  <form class="space-y-4">
+  <form class="space-y-4 mb-6">
     <div class="flex flex-col md:flex-row gap-4">
       <div class="flex-1">
         <input
           type="text"
+          name="search"
           placeholder={t.placeholder}
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
         />
       </div>
       <button type="submit" class="btn-primary whitespace-nowrap">
@@ -39,21 +38,21 @@ const t = translations[lang];
     </div>
     
     <!-- Quick Filters -->
-    <div class="flex flex-wrap gap-2 pt-2">
-      <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+    <div class="flex flex-wrap gap-3 pt-2">
+      <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
         <option>Property Type</option>
         <option>Single Family</option>
         <option>Condo</option>
         <option>Townhouse</option>
       </select>
-      <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+      <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
         <option>Price Range</option>
         <option>Under $200K</option>
         <option>$200K - $400K</option>
         <option>$400K - $600K</option>
         <option>$600K+</option>
       </select>
-      <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+      <select class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
         <option>Bedrooms</option>
         <option>1+</option>
         <option>2+</option>
@@ -64,37 +63,15 @@ const t = translations[lang];
   </form>
 
   <!-- HAR IDX Search Widget Integration -->
-  <div class="mt-4">
-    <!-- Demo HAR IDX Search Widget (replace with your account when ready) -->
+  <div class="card">
     <iframe 
       src={`https://www.har.com/widgets/search?account=DEMO&lang=${lang}&style=modern&demo=true`}
       width="100%"
       height="400"
       frameborder="0"
       title={t.placeholder}
-      class="rounded-lg shadow-sm"
+      class="rounded-xl"
       style="min-height: 400px;">
     </iframe>
-    
-    <!-- Alternative: Script-based integration -->
-    <!-- 
-    <div id="har-idx-search-widget"></div>
-    <script>
-      // Replace with your HAR IDX configuration
-      window.HarIDX = window.HarIDX || {};
-      HarIDX.render({
-        container: '#har-idx-search-widget',
-        account: 'YOURACCOUNT',
-        type: 'search',
-        language: '{lang}',
-        theme: 'modern'
-      });
-    </script>
-    <script src="https://www.har.com/widgets/har-idx.js" async></script>
-    -->
-  </div>
-  
-  <div class="mt-2 p-3 bg-blue-50 border border-blue-200 rounded text-xs text-blue-700">
-    <strong>Demo Mode:</strong> Using demo data. Replace "DEMO" with your HAR IDX account ID when ready for live MLS data.
   </div>
 </div>

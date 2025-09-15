@@ -29,16 +29,16 @@ const t = translations.es;
 
 <MainLayout title={t.title} description={t.description} lang="es">
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-20">
+  <section class="bg-gradient-to-r from-primary-600 to-primary-700 text-white section">
     <div class="container-custom">
       <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        <h1 class="hero-title">
           {t.hero.title}
         </h1>
-        <p class="text-xl md:text-2xl mb-8 text-primary-100">
+        <p class="hero-subtitle">
           {t.hero.subtitle}
         </p>
-        <a href="#search" class="btn-primary bg-white text-primary-600 hover:bg-primary-50">
+        <a href="#search" class="btn-inverted btn-lg">
           {t.hero.cta}
         </a>
       </div>
@@ -46,13 +46,13 @@ const t = translations.es;
   </section>
 
   <!-- Property Search Widget Section -->
-  <section id="search" class="py-16 bg-white">
+  <section id="search" class="section bg-white">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+      <div class="section-header">
+        <h2 class="section-title">
           Búsqueda de Propiedades
         </h2>
-        <p class="text-lg text-secondary-600">
+        <p class="section-subtitle">
           Encuentra propiedades con nuestras herramientas avanzadas de búsqueda
         </p>
       </div>
@@ -63,13 +63,13 @@ const t = translations.es;
   </section>
 
   <!-- Featured Properties Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="section bg-gray-50">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+      <div class="section-header">
+        <h2 class="section-title">
           {t.featured.title}
         </h2>
-        <p class="text-lg text-secondary-600">
+        <p class="section-subtitle">
           {t.featured.subtitle}
         </p>
       </div>
@@ -80,13 +80,13 @@ const t = translations.es;
   </section>
 
   <!-- Lead Capture Section -->
-  <section class="py-16 bg-primary-50">
+  <section class="section bg-primary-50">
     <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+      <div class="section-header">
+        <h2 class="section-title">
           {t.contact.title}
         </h2>
-        <p class="text-lg text-secondary-600">
+        <p class="section-subtitle">
           {t.contact.subtitle}
         </p>
       </div>
