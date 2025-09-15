@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +10,7 @@
   }
   
   body {
-    @apply text-navy-800 bg-gray-50 font-serif;
+    @apply text-navy-800 bg-secondary-50 font-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -93,5 +95,64 @@
   
   .navbar-solid {
     @apply bg-white/95 backdrop-blur-md shadow-lg;
+  }
+  
+  /* Navbar state-based styling */
+  .navbar-sticky.navbar-transparent #logo {
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-sticky.navbar-solid #logo {
+    color: rgb(30 41 59); /* navy-800 */
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-sticky.navbar-transparent .nav-link,
+  .navbar-sticky.navbar-transparent .mobile-nav-link {
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-sticky.navbar-transparent .nav-link:hover,
+  .navbar-sticky.navbar-transparent .mobile-nav-link:hover {
+    color: rgb(94 234 212); /* teal-300 */
+  }
+  
+  .navbar-sticky.navbar-solid .nav-link,
+  .navbar-sticky.navbar-solid .mobile-nav-link {
+    color: rgb(51 65 85); /* navy-700 */
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-sticky.navbar-solid .nav-link:hover,
+  .navbar-sticky.navbar-solid .mobile-nav-link:hover {
+    color: rgb(15 118 110); /* teal-700 */
+  }
+  
+  .navbar-sticky.navbar-transparent [data-menu-button] {
+    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-sticky.navbar-transparent [data-menu-button]:hover {
+    color: rgb(94 234 212); /* teal-300 */
+  }
+  
+  .navbar-sticky.navbar-solid [data-menu-button] {
+    color: rgb(51 65 85); /* navy-700 */
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-sticky.navbar-solid [data-menu-button]:hover {
+    color: rgb(15 118 110); /* teal-700 */
+  }
+  
+  .navbar-sticky.navbar-transparent #mobile-menu {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .navbar-sticky.navbar-solid #mobile-menu {
+    border-color: rgb(226 232 240); /* gray-200 */
   }
 }

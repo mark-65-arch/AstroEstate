@@ -55,7 +55,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['ui-serif', 'Georgia', 'serif'],
+        serif: ['Lora', 'ui-serif', 'Georgia', 'serif'],
         heading: ['Inter', 'system-ui', 'sans-serif']
       }
     },
