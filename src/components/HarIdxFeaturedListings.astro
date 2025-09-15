@@ -10,32 +10,227 @@ const { lang, count = 6 } = Astro.props;
 const translations = {
   en: {
     title: 'Featured Properties',
-    moreListings: 'View More Listings'
+    moreListings: 'View More Listings',
+    beds: 'beds',
+    baths: 'baths',
+    sqft: 'sqft',
+    forSale: 'For Sale',
+    newListing: 'New Listing',
+    priceReduced: 'Price Reduced',
+    viewDetails: 'View Details'
   },
   es: {
     title: 'Propiedades Destacadas',
-    moreListings: 'Ver Más Listados'
+    moreListings: 'Ver Más Listados',
+    beds: 'hab',
+    baths: 'baños',
+    sqft: 'pies²',
+    forSale: 'En Venta',
+    newListing: 'Nuevo Listado',
+    priceReduced: 'Precio Reducido',
+    viewDetails: 'Ver Detalles'
   }
 };
+
+// Sample featured properties data
+const featuredProperties = [
+  {
+    id: 1,
+    title: 'Modern Family Home in Memorial',
+    price: '$1,250,000',
+    address: '123 Oak Valley Dr, Houston, TX 77024',
+    beds: 4,
+    baths: 3.5,
+    sqft: '3,200',
+    image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    badge: 'newListing',
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'Luxury Townhouse Downtown',
+    price: '$890,000',
+    address: '456 Main St, Houston, TX 77002',
+    beds: 3,
+    baths: 2.5,
+    sqft: '2,100',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80',
+    badge: 'forSale',
+    featured: true
+  },
+  {
+    id: 3,
+    title: 'Charming Victorian in Heights',
+    price: '$675,000',
+    address: '789 Heights Blvd, Houston, TX 77008',
+    beds: 3,
+    baths: 2,
+    sqft: '1,850',
+    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80',
+    badge: 'priceReduced',
+    featured: true
+  },
+  {
+    id: 4,
+    title: 'Contemporary Condo Midtown',
+    price: '$545,000',
+    address: '321 Smith St #15, Houston, TX 77002',
+    beds: 2,
+    baths: 2,
+    sqft: '1,200',
+    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    badge: 'forSale',
+    featured: false
+  },
+  {
+    id: 5,
+    title: 'Family Home in Katy',
+    price: '$425,000',
+    address: '567 Sunset Ridge, Katy, TX 77494',
+    beds: 4,
+    baths: 3,
+    sqft: '2,800',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    badge: 'newListing',
+    featured: false
+  },
+  {
+    id: 6,
+    title: 'Ranch Style in Sugar Land',
+    price: '$520,000',
+    address: '890 Maple Dr, Sugar Land, TX 77479',
+    beds: 3,
+    baths: 2,
+    sqft: '2,200',
+    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    badge: 'forSale',
+    featured: false
+  }
+];
+
+// Get the featured properties or all if count is high
+const displayProperties = featuredProperties.slice(0, count);
 
 const t = translations[lang];
 ---
 
 <div class="har-idx-featured-listings">
-  <!-- HAR IDX Featured Listings Integration -->
-  <div class="card">
-    <iframe 
-      src={`https://www.har.com/widgets/featured?account=DEMO&count=${count}&lang=${lang}&style=modern&demo=true`}
-      width="100%"
-      height="600"
-      title={t.title}
-      class="rounded-xl border-0">
-    </iframe>
+  <!-- Custom Property Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+    {displayProperties.map((property) => (
+      <div class="property-card group bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-gray-100">
+        <!-- Property Image -->
+        <div class="relative overflow-hidden">
+          <img 
+            src={property.image}
+            alt={property.title}
+            class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+          <!-- Property Badge -->
+          <div class="absolute top-4 left-4">
+            <span class={`
+              px-3 py-1 rounded-full text-sm font-semibold
+              ${property.badge === 'newListing' ? 'bg-teal-500 text-white' : ''}
+              ${property.badge === 'priceReduced' ? 'bg-orange-500 text-white' : ''}
+              ${property.badge === 'forSale' ? 'bg-navy-600 text-white' : ''}
+            `}>
+              {property.badge === 'newListing' ? t.newListing : ''}
+              {property.badge === 'priceReduced' ? t.priceReduced : ''}
+              {property.badge === 'forSale' ? t.forSale : ''}
+            </span>
+          </div>
+          <!-- Favorite Heart Icon -->
+          <div class="absolute top-4 right-4">
+            <button class="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-200 group/heart">
+              <svg class="w-5 h-5 text-gray-400 group-hover/heart:text-red-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Property Details -->
+        <div class="p-6">
+          <!-- Price -->
+          <div class="mb-3">
+            <span class="text-3xl font-bold text-navy-800">{property.price}</span>
+          </div>
+          
+          <!-- Property Title -->
+          <h3 class="text-xl font-semibold text-navy-700 mb-2 group-hover:text-teal-600 transition-colors duration-200">
+            {property.title}
+          </h3>
+          
+          <!-- Address -->
+          <p class="text-gray-600 mb-4 flex items-center">
+            <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            {property.address}
+          </p>
+          
+          <!-- Property Stats -->
+          <div class="flex items-center justify-between text-sm text-gray-600 border-t border-gray-100 pt-4">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+              </svg>
+              <span class="font-semibold">{property.beds}</span>
+              <span class="ml-1">{t.beds}</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span class="font-semibold">{property.baths}</span>
+              <span class="ml-1">{t.baths}</span>
+            </div>
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-1 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+              </svg>
+              <span class="font-semibold">{property.sqft}</span>
+              <span class="ml-1">{t.sqft}</span>
+            </div>
+          </div>
+          
+          <!-- View Details Button -->
+          <div class="mt-6">
+            <button class="w-full btn-primary hover:bg-teal-600 transition-colors duration-200">
+              {t.viewDetails}
+            </button>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- HAR IDX Integration (Optional) -->
+  <div class="bg-gray-50 rounded-xl p-6 mb-8">
+    <div class="text-center mb-4">
+      <h3 class="text-lg font-semibold text-navy-700 mb-2">
+        More Properties Available
+      </h3>
+      <p class="text-gray-600">
+        Browse additional listings through our MLS integration
+      </p>
+    </div>
+    <div class="bg-white rounded-xl overflow-hidden shadow-sm">
+      <iframe 
+        src={`https://www.har.com/widgets/featured?account=DEMO&count=3&lang=${lang}&style=modern&demo=true`}
+        width="100%"
+        height="400"
+        title={t.title}
+        class="border-0">
+      </iframe>
+    </div>
   </div>
 
   <!-- View More Button -->
-  <div class="text-center mt-8">
-    <a href={lang === 'en' ? '/en#search' : '/es#search'} class="btn-primary">
+  <div class="text-center">
+    <a href={lang === 'en' ? '/en#search' : '/es#search'} class="btn-primary btn-lg px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
       {t.moreListings}
     </a>
   </div>
