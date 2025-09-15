@@ -2,6 +2,7 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import HarIdxSearchWidget from '../../components/HarIdxSearchWidget.astro';
 import HarIdxFeaturedListings from '../../components/HarIdxFeaturedListings.astro';
+import HarIdxLeadCapture from '../../components/HarIdxLeadCapture.astro';
 
 const translations = {
   es: {
@@ -15,6 +16,10 @@ const translations = {
     featured: {
       title: 'Propiedades Destacadas',
       subtitle: 'Descubre nuestros listados más populares'
+    },
+    contact: {
+      title: '¿Listo para Comenzar?',
+      subtitle: 'Contáctanos hoy para encontrar tu hogar perfecto'
     }
   }
 };
@@ -71,6 +76,24 @@ const t = translations.es;
       
       <!-- HAR IDX Featured Listings Widget -->
       <HarIdxFeaturedListings lang="es" count={6} />
+    </div>
+  </section>
+
+  <!-- Lead Capture Section -->
+  <section class="py-16 bg-primary-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          {t.contact.title}
+        </h2>
+        <p class="text-lg text-secondary-600">
+          {t.contact.subtitle}
+        </p>
+      </div>
+      
+      <div class="max-w-2xl mx-auto">
+        <HarIdxLeadCapture lang="es" type="contact" />
+      </div>
     </div>
   </section>
 </MainLayout>

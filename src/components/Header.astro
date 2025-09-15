@@ -82,3 +82,20 @@ const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : cu
     </div>
   </nav>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (toggleButton && mobileMenu) {
+      toggleButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        
+        // Update ARIA attributes for accessibility
+        const isExpanded = !mobileMenu.classList.contains('hidden');
+        toggleButton.setAttribute('aria-expanded', isExpanded.toString());
+      });
+    }
+  });
+</script>
