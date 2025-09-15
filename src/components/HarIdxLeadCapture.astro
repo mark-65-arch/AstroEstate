@@ -7,7 +7,20 @@ export interface Props {
 
 const { lang, type = 'contact' } = Astro.props;
 
-const translations = {
+type FormTranslations = {
+  title: string;
+  subtitle: string;
+  name?: string;
+  email: string;
+  phone?: string;
+  message?: string;
+  propertyType?: string;
+  priceRange?: string;
+  location?: string;
+  submit: string;
+};
+
+const translations: Record<'en' | 'es', Record<'contact' | 'property-interest' | 'newsletter', FormTranslations>> = {
   en: {
     contact: {
       title: 'Get in Touch',
@@ -187,20 +200,23 @@ const t = translations[lang][type];
   <script>
     // HAR IDX form submission handler
     document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('#har-idx-lead-form');
+      const form = document.querySelector('#har-idx-lead-form') as HTMLFormElement;
       if (form) {
         form.addEventListener('submit', function(e) {
           e.preventDefault();
           
           // Show loading state
-          const submitButton = form.querySelector('button[type="submit"]');
+          const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+          if (!submitButton) return;
+          
           const originalText = submitButton.textContent;
           submitButton.textContent = 'Sending...';
           submitButton.disabled = true;
           
           // Get form data
           const formData = new FormData(form);
-          const leadData = Object.fromEntries(formData.entries());
+          // Form data collected for potential API integration
+          console.log('Form data collected:', Object.fromEntries(formData.entries()));
           
           // Simulate API call for demo mode
           setTimeout(() => {
@@ -216,7 +232,9 @@ const t = translations[lang][type];
               </div>
             `;
             
-            form.parentNode.insertBefore(successDiv, form);
+            if (form.parentNode) {
+              form.parentNode.insertBefore(successDiv, form);
+            }
             form.reset();
             
             // Reset button

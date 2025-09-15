@@ -21,7 +21,6 @@ const translations = {
 };
 
 const t = translations[lang];
-const otherLang = lang === 'en' ? 'es' : 'en';
 const currentPath = Astro.url.pathname;
 const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : currentPath.replace('/es', '/en');
 ---
