@@ -1,0 +1,76 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import HarIdxSearchWidget from '../../components/HarIdxSearchWidget.astro';
+import HarIdxFeaturedListings from '../../components/HarIdxFeaturedListings.astro';
+
+const translations = {
+  en: {
+    title: 'RealEstate Pro - Find Your Dream Home',
+    description: 'Professional real estate services in English and Spanish. Find your perfect home with our expert agents.',
+    hero: {
+      title: 'Find Your Dream Home',
+      subtitle: 'Professional real estate services with personalized attention',
+      cta: 'Search Properties'
+    },
+    featured: {
+      title: 'Featured Properties',
+      subtitle: 'Discover our most popular listings'
+    }
+  }
+};
+
+const t = translations.en;
+---
+
+<MainLayout title={t.title} description={t.description} lang="en">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-20">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          {t.hero.title}
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-primary-100">
+          {t.hero.subtitle}
+        </p>
+        <a href="#search" class="btn-primary bg-white text-primary-600 hover:bg-primary-50">
+          {t.hero.cta}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property Search Widget Section -->
+  <section id="search" class="py-16 bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          Property Search
+        </h2>
+        <p class="text-lg text-secondary-600">
+          Find properties with our advanced search tools
+        </p>
+      </div>
+      
+      <!-- HAR IDX Search Widget -->
+      <HarIdxSearchWidget lang="en" />
+    </div>
+  </section>
+
+  <!-- Featured Properties Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          {t.featured.title}
+        </h2>
+        <p class="text-lg text-secondary-600">
+          {t.featured.subtitle}
+        </p>
+      </div>
+      
+      <!-- HAR IDX Featured Listings Widget -->
+      <HarIdxFeaturedListings lang="en" count={6} />
+    </div>
+  </section>
+</MainLayout>

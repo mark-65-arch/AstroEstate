@@ -1,17 +1,21 @@
 ---
-// Temporary homepage for initial setup
+// Root redirect page for i18n routing
 ---
+
+<script>
+  // Redirect to English version
+  window.location.href = '/en';
+</script>
+
+<meta http-equiv="refresh" content="0; url=/en">
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Bilingual Real Estate</title>
+    <title>Redirecting...</title>
   </head>
   <body>
-    <h1>Bilingual Real Estate Website</h1>
-    <p>Setting up Astro project...</p>
+    <p>Redirecting to <a href="/en">English version</a>...</p>
   </body>
 </html>

@@ -1,0 +1,84 @@
+---
+export interface Props {
+  lang: 'en' | 'es';
+}
+
+const { lang } = Astro.props;
+
+const translations = {
+  en: {
+    home: 'Home',
+    services: 'Services', 
+    contact: 'Contact',
+    language: 'Español'
+  },
+  es: {
+    home: 'Inicio',
+    services: 'Servicios',
+    contact: 'Contacto',
+    language: 'English'
+  }
+};
+
+const t = translations[lang];
+const otherLang = lang === 'en' ? 'es' : 'en';
+const currentPath = Astro.url.pathname;
+const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : currentPath.replace('/es', '/en');
+---
+
+<header class="bg-white shadow-sm border-b border-gray-200">
+  <nav class="container-custom">
+    <div class="flex justify-between items-center py-4">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href={lang === 'en' ? '/en' : '/es'} class="text-2xl font-bold text-primary-600">
+          RealEstate Pro
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-toggle" class="text-secondary-700 hover:text-primary-600 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href={lang === 'en' ? '/en' : '/es'} class="text-secondary-700 hover:text-primary-600 font-medium transition-colors">
+          {t.home}
+        </a>
+        <a href={lang === 'en' ? '/en/services' : '/es/services'} class="text-secondary-700 hover:text-primary-600 font-medium transition-colors">
+          {t.services}
+        </a>
+        <a href={lang === 'en' ? '/en/contact' : '/es/contact'} class="text-secondary-700 hover:text-primary-600 font-medium transition-colors">
+          {t.contact}
+        </a>
+      </div>
+
+      <!-- Language Switcher -->
+      <div class="flex items-center">
+        <a href={switchedPath} class="btn-secondary text-sm">
+          {t.language}
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-gray-200 pt-4 pb-4">
+      <div class="flex flex-col space-y-4">
+        <a href={lang === 'en' ? '/en' : '/es'} class="text-secondary-700 hover:text-primary-600 font-medium transition-colors">
+          {t.home}
+        </a>
+        <a href={lang === 'en' ? '/en/services' : '/es/services'} class="text-secondary-700 hover:text-primary-600 font-medium transition-colors">
+          {t.services}
+        </a>
+        <a href={lang === 'en' ? '/en/contact' : '/es/contact'} class="text-secondary-700 hover:text-primary-600 font-medium transition-colors">
+          {t.contact}
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

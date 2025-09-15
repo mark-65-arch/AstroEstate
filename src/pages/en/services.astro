@@ -1,0 +1,102 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import HarIdxLeadCapture from '../../components/HarIdxLeadCapture.astro';
+
+const translations = {
+  en: {
+    title: 'Our Services - RealEstate Pro',
+    description: 'Comprehensive real estate services including buying, selling, property management, and investment consulting.',
+    hero: {
+      title: 'Our Services',
+      subtitle: 'Professional real estate solutions tailored to your needs'
+    },
+    services: [
+      {
+        title: 'Home Buying',
+        description: 'Expert guidance through every step of the home buying process',
+        features: ['Market Analysis', 'Property Search', 'Negotiation Support', 'Closing Assistance']
+      },
+      {
+        title: 'Home Selling',
+        description: 'Maximize your property value with our proven selling strategies',
+        features: ['Property Valuation', 'Marketing Strategy', 'Staging Consultation', 'Transaction Management']
+      },
+      {
+        title: 'Investment Properties',
+        description: 'Build wealth through strategic real estate investments',
+        features: ['Investment Analysis', 'Portfolio Management', 'Rental Properties', 'Market Research']
+      },
+      {
+        title: 'Property Management',
+        description: 'Comprehensive management services for rental properties',
+        features: ['Tenant Screening', 'Maintenance Coordination', 'Rent Collection', 'Financial Reporting']
+      }
+    ]
+  }
+};
+
+const t = translations.en;
+---
+
+<MainLayout title={t.title} description={t.description} lang="en">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-20">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          {t.hero.title}
+        </h1>
+        <p class="text-xl md:text-2xl text-primary-100">
+          {t.hero.subtitle}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-16 bg-white">
+    <div class="container-custom">
+      <div class="grid md:grid-cols-2 gap-8">
+        {t.services.map((service) => (
+          <div class="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-shadow">
+            <h3 class="text-2xl font-bold text-secondary-900 mb-4">
+              {service.title}
+            </h3>
+            <p class="text-secondary-600 mb-6">
+              {service.description}
+            </p>
+            <ul class="space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-center text-secondary-700">
+                  <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Capture Widget Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          Get Started Today
+        </h2>
+        <p class="text-lg text-secondary-600">
+          Contact us to discuss your real estate needs
+        </p>
+      </div>
+      
+      <!-- HAR IDX Lead Capture Widget -->
+      <div class="max-w-2xl mx-auto">
+        <HarIdxLeadCapture lang="en" type="contact" />
+      </div>
+    </div>
+  </section>
+</MainLayout>
