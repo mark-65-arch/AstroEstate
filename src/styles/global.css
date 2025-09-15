@@ -8,22 +8,26 @@
   }
   
   body {
-    @apply text-secondary-900 bg-white;
+    @apply text-navy-800 bg-gray-50 font-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold text-navy-900;
   }
 }
 
 @layer components {
   /* Button System */
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+    @apply bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
   }
   
   .btn-secondary {
-    @apply bg-secondary-100 hover:bg-secondary-200 text-secondary-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-secondary-200;
+    @apply bg-gray-100 hover:bg-gray-200 text-navy-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-gray-200;
   }
   
   .btn-inverted {
-    @apply bg-white hover:bg-primary-50 text-primary-600 font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
+    @apply bg-white hover:bg-teal-50 text-teal-600 font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
   }
   
   .btn-sm {
@@ -36,7 +40,11 @@
   
   /* Card System */
   .card {
-    @apply bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-200;
+    @apply bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-lg transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply hover:scale-105 hover:shadow-xl;
   }
   
   .card-padding {
@@ -53,11 +61,11 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-secondary-900 mb-4;
+    @apply text-3xl md:text-4xl font-bold text-navy-900 mb-4 font-heading;
   }
   
   .section-subtitle {
-    @apply text-lg text-secondary-600;
+    @apply text-lg text-navy-600 font-serif;
   }
   
   /* Layout Container */
@@ -67,10 +75,23 @@
   
   /* Typography */
   .hero-title {
-    @apply text-4xl md:text-6xl font-bold mb-6;
+    @apply text-4xl md:text-6xl font-bold mb-6 font-heading;
   }
   
   .hero-subtitle {
-    @apply text-xl md:text-2xl mb-8 text-white/90;
+    @apply text-xl md:text-2xl mb-8 text-white/90 font-serif;
+  }
+  
+  /* Navigation */
+  .navbar-sticky {
+    @apply fixed top-0 left-0 right-0 z-50 transition-all duration-300;
+  }
+  
+  .navbar-transparent {
+    @apply bg-transparent;
+  }
+  
+  .navbar-solid {
+    @apply bg-white/95 backdrop-blur-md shadow-lg;
   }
 }
