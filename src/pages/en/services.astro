@@ -4,34 +4,40 @@ import HarIdxLeadCapture from '../../components/HarIdxLeadCapture.astro';
 
 const translations = {
   en: {
-    title: 'Our Services - RealEstate Pro',
-    description: 'Comprehensive real estate services including buying, selling, property management, and investment consulting.',
+    title: 'Our Services - Mr. Sold Real Estate',
+    description: 'Expert real estate services with 17 years experience and $150M+ in sales. Specializing in luxury homes with bilingual support.',
     hero: {
       title: 'Our Services',
-      subtitle: 'Professional real estate solutions tailored to your needs'
+      subtitle: 'Professional real estate solutions with Mr. Sold Real Estate'
     },
     services: [
       {
         title: 'Home Buying',
-        description: 'Expert guidance through every step of the home buying process',
-        features: ['Market Analysis', 'Property Search', 'Negotiation Support', 'Closing Assistance']
+        description: 'Expert guidance through every step of the home buying process with 17 years of local market knowledge',
+        features: ['Market Analysis & Pricing', 'Luxury Home Search', 'Bilingual Support (EN/ES/RU/HI)', 'Expert Negotiation', 'Closing Coordination']
       },
       {
         title: 'Home Selling',
-        description: 'Maximize your property value with our proven selling strategies',
-        features: ['Property Valuation', 'Marketing Strategy', 'Staging Consultation', 'Transaction Management']
+        description: 'Maximize your property value with proven strategies that generated $150M+ in sales',
+        features: ['Professional Property Valuation', 'Strategic Marketing Plan', 'Luxury Home Staging', 'HAR/MLS Listing Management', 'Transaction Oversight']
       },
       {
-        title: 'Investment Properties',
-        description: 'Build wealth through strategic real estate investments',
-        features: ['Investment Analysis', 'Portfolio Management', 'Rental Properties', 'Market Research']
+        title: 'CMA Request (Comparative Market Analysis)',
+        description: 'Get a comprehensive market analysis to determine your home\'s current market value',
+        features: ['Detailed Property Analysis', 'Recent Sales Comparison', 'Market Trends Report', 'Pricing Strategy', 'Free Consultation']
       },
       {
-        title: 'Property Management',
-        description: 'Comprehensive management services for rental properties',
-        features: ['Tenant Screening', 'Maintenance Coordination', 'Rent Collection', 'Financial Reporting']
+        title: 'Luxury Home Specialist',
+        description: 'Specialized expertise in high-end properties throughout the Houston area',
+        features: ['Luxury Market Expertise', 'High-End Property Network', 'Discrete Marketing', 'Premium Service Experience', 'Investment Grade Properties']
       }
-    ]
+    ],
+    cta: {
+      title: 'Ready to Get Started?',
+      subtitle: 'Contact Enrique "MR. SOLD" Escobar today',
+      phone: '(713) 903-7178',
+      email: 'mrsoldtx@gmail.com'
+    }
   }
 };
 
@@ -81,16 +87,24 @@ const t = translations.en;
     </div>
   </section>
 
-  <!-- Lead Capture Widget Section -->
-  <section class="py-16 bg-gray-50">
+  <!-- Contact Section -->
+  <section class="py-16 bg-primary-light">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
-          Get Started Today
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          {t.cta.title}
         </h2>
-        <p class="text-lg text-secondary-600">
-          Contact us to discuss your real estate needs
+        <p class="text-lg mb-8">
+          {t.cta.subtitle}
         </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <a href="tel:713-903-7178" class="btn-primary btn-lg px-8 py-4 text-lg font-semibold">
+            📞 Call Direct: {t.cta.phone}
+          </a>
+          <a href="mailto:mrsoldtx@gmail.com" class="btn-secondary btn-lg px-8 py-4 text-lg font-semibold">
+            ✉️ Email: {t.cta.email}
+          </a>
+        </div>
       </div>
       
       <!-- HAR IDX Lead Capture Widget -->

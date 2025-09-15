@@ -4,34 +4,40 @@ import HarIdxLeadCapture from '../../components/HarIdxLeadCapture.astro';
 
 const translations = {
   es: {
-    title: 'Nuestros Servicios - RealEstate Pro',
-    description: 'Servicios integrales de bienes raíces incluyendo compra, venta, administración de propiedades y consultoría de inversión.',
+    title: 'Nuestros Servicios - Mr. Sold Real Estate',
+    description: 'Servicios expertos de bienes raíces con 17 años de experiencia y $150M+ en ventas. Especializándonos en casas de lujo con soporte bilingüe.',
     hero: {
       title: 'Nuestros Servicios',
-      subtitle: 'Soluciones profesionales de bienes raíces adaptadas a tus necesidades'
+      subtitle: 'Soluciones profesionales de bienes raíces con Mr. Sold Real Estate'
     },
     services: [
       {
         title: 'Compra de Vivienda',
-        description: 'Asesoramiento experto en cada paso del proceso de compra de vivienda',
-        features: ['Análisis de Mercado', 'Búsqueda de Propiedades', 'Apoyo en Negociación', 'Asistencia en Cierre']
+        description: 'Asesoramiento experto en cada paso del proceso de compra con 17 años de conocimiento del mercado local',
+        features: ['Análisis de Mercado y Precios', 'Búsqueda de Casas de Lujo', 'Soporte Bilingüe (EN/ES/RU/HI)', 'Negociación Experta', 'Coordinación de Cierre']
       },
       {
         title: 'Venta de Vivienda',
-        description: 'Maximiza el valor de tu propiedad con nuestras estrategias probadas de venta',
-        features: ['Valuación de Propiedad', 'Estrategia de Marketing', 'Consultoría de Staging', 'Gestión de Transacciones']
+        description: 'Maximiza el valor de tu propiedad con estrategias probadas que generaron $150M+ en ventas',
+        features: ['Valuación Profesional', 'Plan de Marketing Estratégico', 'Staging de Casas de Lujo', 'Gestión HAR/MLS', 'Supervisión de Transacciones']
       },
       {
-        title: 'Propiedades de Inversión',
-        description: 'Construye riqueza a través de inversiones inmobiliarias estratégicas',
-        features: ['Análisis de Inversión', 'Gestión de Portafolio', 'Propiedades de Alquiler', 'Investigación de Mercado']
+        title: 'Solicitud de CMA (Análisis Comparativo del Mercado)',
+        description: 'Obtén un análisis integral del mercado para determinar el valor actual de tu casa',
+        features: ['Análisis Detallado de Propiedad', 'Comparación de Ventas Recientes', 'Reporte de Tendencias del Mercado', 'Estrategia de Precios', 'Consulta Gratuita']
       },
       {
-        title: 'Administración de Propiedades',
-        description: 'Servicios integrales de administración para propiedades de alquiler',
-        features: ['Evaluación de Inquilinos', 'Coordinación de Mantenimiento', 'Cobro de Alquiler', 'Reportes Financieros']
+        title: 'Especialista en Casas de Lujo',
+        description: 'Experiencia especializada en propiedades de alta gama en toda el área de Houston',
+        features: ['Experiencia en Mercado de Lujo', 'Red de Propiedades de Alta Gama', 'Marketing Discreto', 'Experiencia de Servicio Premium', 'Propiedades Grado Inversión']
       }
-    ]
+    ],
+    cta: {
+      title: '¿Listo para Comenzar?',
+      subtitle: 'Contacta a Enrique "MR. SOLD" Escobar hoy',
+      phone: '(713) 903-7178',
+      email: 'mrsoldtx@gmail.com'
+    }
   }
 };
 
@@ -81,16 +87,24 @@ const t = translations.es;
     </div>
   </section>
 
-  <!-- Lead Capture Widget Section -->
-  <section class="py-16 bg-gray-50">
+  <!-- Contact Section -->
+  <section class="py-16 bg-primary-light">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
-          Comienza Hoy
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          {t.cta.title}
         </h2>
-        <p class="text-lg text-secondary-600">
-          Contáctanos para discutir tus necesidades inmobiliarias
+        <p class="text-lg mb-8">
+          {t.cta.subtitle}
         </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          <a href="tel:713-903-7178" class="btn-primary btn-lg px-8 py-4 text-lg font-semibold">
+            📞 Llamar Directo: {t.cta.phone}
+          </a>
+          <a href="mailto:mrsoldtx@gmail.com" class="btn-secondary btn-lg px-8 py-4 text-lg font-semibold">
+            ✉️ Email: {t.cta.email}
+          </a>
+        </div>
       </div>
       
       <!-- HAR IDX Lead Capture Widget -->
