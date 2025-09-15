@@ -2,6 +2,7 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import HarIdxSearchWidget from '../../components/HarIdxSearchWidget.astro';
 import HarIdxFeaturedListings from '../../components/HarIdxFeaturedListings.astro';
+import TrustSocialProof from '../../components/TrustSocialProof.astro';
 import HarIdxLeadCapture from '../../components/HarIdxLeadCapture.astro';
 
 const translations = {
@@ -106,8 +107,11 @@ const t = translations.es;
     </div>
   </section>
 
+  <!-- Trust & Social Proof Section -->
+  <TrustSocialProof lang="es" />
+
   <!-- Lead Capture Section -->
-  <section class="section bg-primary-50">
+  <section id="lead-capture" class="section bg-primary-50">
     <div class="container-custom">
       <div class="section-header">
         <h2 class="section-title">
