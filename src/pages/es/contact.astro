@@ -44,23 +44,23 @@ const t = translations.es;
       <img 
         src={`${import.meta.env.BASE_URL}assets/images/hero-contact.jpg`}
         alt="Oficina inmobiliaria moderna de Houston con vistas al horizonte de la ciudad - Espacio de consulta profesional de Mr. Sold Real Estate"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover brightness-110 contrast-105"
         loading="eager"
         fetchpriority="high"
       />
-      <!-- Gradient Overlay -->
-      <div class="absolute inset-0 bg-black/50"></div>
+      <!-- Light Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-r from-white/15 via-primary-50/20 to-white/15"></div>
     </div>
     
     <!-- Hero Content -->
     <div class="relative z-10 container-custom px-4 py-8">
       <div class="max-w-4xl mx-auto text-center">
         <!-- Hero Card -->
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/20">
-          <h1 class="hero-title text-white leading-tight">
+        <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/30">
+          <h1 class="hero-title text-white leading-tight drop-shadow-lg">
             {t.hero.title}
           </h1>
-          <p class="hero-subtitle leading-relaxed">
+          <p class="hero-subtitle leading-relaxed drop-shadow-md">
             {t.hero.subtitle}
           </p>
           <div class="flex flex-col gap-4 justify-center items-center w-full">
