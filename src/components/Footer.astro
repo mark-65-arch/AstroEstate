@@ -75,13 +75,13 @@ const baseUrl = import.meta.env.BASE_URL;
 <footer class="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white">
   <div class="container-custom py-16">
     <!-- Main Footer Content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+    <div class="grid grid-cols-1 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
       
       <!-- Column 1: Brand Info -->
-      <div class="lg:col-span-1">
+      <div class="text-center sm:text-left lg:col-span-1">
         <div class="mb-6">
-          <h3 class="text-2xl font-bold text-white mb-3 font-heading">{t.company}</h3>
-          <p class="text-accent text-lg font-semibold mb-4">{t.tagline}</p>
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">{t.company}</h3>
+          <p class="text-accent text-base sm:text-lg font-semibold mb-4">{t.tagline}</p>
           <p class="text-gray-300 leading-relaxed font-serif mb-4">{t.description}</p>
           <p class="text-sm text-gray-400">{t.license}</p>
         </div>
@@ -116,8 +116,8 @@ const baseUrl = import.meta.env.BASE_URL;
       </div>
       
       <!-- Column 2: Quick Links -->
-      <div class="lg:col-span-1">
-        <h4 class="text-xl font-bold text-white mb-6 font-heading">{t.quickLinks}</h4>
+      <div class="text-center sm:text-left lg:col-span-1">
+        <h4 class="text-lg sm:text-xl font-bold text-white mb-6 font-heading">{t.quickLinks}</h4>
         <div class="space-y-4">
           <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
             {t.home}
@@ -141,8 +141,8 @@ const baseUrl = import.meta.env.BASE_URL;
       </div>
       
       <!-- Column 3: Contact Info -->
-      <div class="lg:col-span-1">
-        <h4 class="text-xl font-bold text-white mb-6 font-heading">{t.contact}</h4>
+      <div class="text-center sm:text-left lg:col-span-1">
+        <h4 class="text-lg sm:text-xl font-bold text-white mb-6 font-heading">{t.contact}</h4>
         <div class="space-y-4">
           <!-- Phone -->
           <div class="flex items-start space-x-3">
@@ -204,8 +204,8 @@ const baseUrl = import.meta.env.BASE_URL;
       </div>
       
       <!-- Column 4: Social & Newsletter -->
-      <div class="lg:col-span-1">
-        <h4 class="text-xl font-bold text-white mb-6 font-heading">{t.newsletter}</h4>
+      <div class="text-center sm:text-left lg:col-span-1">
+        <h4 class="text-lg sm:text-xl font-bold text-white mb-6 font-heading">{t.newsletter}</h4>
         
         <!-- Newsletter Signup -->
         <div class="mb-8">
@@ -266,12 +266,12 @@ const baseUrl = import.meta.env.BASE_URL;
     </div>
     
     <!-- Bottom Bar -->
-    <div class="border-t border-gray-600 mt-12 pt-8">
-      <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+    <div class="border-t border-gray-600 mt-8 sm:mt-12 pt-6 sm:pt-8">
+      <div class="flex flex-col space-y-4 text-center lg:flex-row lg:justify-between lg:items-center lg:space-y-0 lg:text-left">
         <p class="text-gray-300 text-sm font-serif">
           © {new Date().getFullYear()} {t.company}. {t.copyright}
         </p>
-        <div class="flex space-x-6 text-sm">
+        <div class="flex flex-col space-y-2 text-sm sm:flex-row sm:space-y-0 sm:space-x-6 sm:justify-center lg:justify-end">
           <a href={lang === 'en' ? `${baseUrl}en/privacy` : `${baseUrl}es/privacy`} class="text-gray-300 hover:text-teal-400 transition-colors duration-200 font-serif">
             {t.privacyPolicy}
           </a>
