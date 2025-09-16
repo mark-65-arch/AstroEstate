@@ -180,3 +180,16 @@ base: process.env.DEPLOY_BASE || '/',
 - Check for existing Replit-compatible configuration before making changes
 - Always test both `npm run build` and `npm run preview` after configuration fixes
 - Use environment variables for dual GitHub Pages/Replit deployment support
+
+## Recent Updates (September 2025)
+
+### Navigation Bar Improvements
+**Enhanced Transparency and Visibility**: Updated the navigation header to better adapt to different hero backgrounds across pages:
+- **Dynamic Transparency**: Navigation starts with semi-transparent background (`bg-black/40` with backdrop blur) when at page top, switches to solid white when scrolling
+- **Improved Text Visibility**: Added text shadows and increased font weights to ensure white navigation text remains readable over any hero image
+- **Page Adaptability**: JavaScript automatically detects pages with/without hero sections and adjusts navigation state accordingly
+- **Mobile Menu**: Enhanced with better transparency and backdrop effects for consistent behavior
+
+**Files Updated**:
+- `src/components/Header.astro`: Removed hardcoded background, now uses dynamic CSS classes
+- `src/styles/global.css`: Enhanced `.navbar-transparent` and related styles with better opacity and text shadows
