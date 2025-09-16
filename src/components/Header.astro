@@ -98,7 +98,7 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     </div>
 
     <!-- Mobile Menu Overlay (Hidden by default) -->
-    <div id="mobile-menu" class="md:hidden fixed inset-0 z-50 hidden" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+    <div id="mobile-menu" class="md:hidden fixed inset-0 z-[60] hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
       <!-- Backdrop -->
       <div id="mobile-menu-backdrop" class="fixed inset-0 h-screen w-full bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-in-out cursor-pointer"></div>
       
@@ -213,7 +213,6 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
         
         // Show menu
         if (mobileMenu) {
-          mobileMenu.style.display = 'block';
           mobileMenu.classList.remove('hidden');
           mobileMenu.setAttribute('aria-hidden', 'false');
         }
@@ -250,7 +249,6 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
         // Wait for animation to complete
         setTimeout(() => {
           if (mobileMenu) {
-            mobileMenu.style.display = 'none';
             mobileMenu.classList.add('hidden');
             mobileMenu.setAttribute('aria-hidden', 'true');
           }
@@ -281,7 +279,7 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
         e.stopPropagation();
         console.log('Mobile menu button clicked');
         
-        const isCurrentlyHidden = mobileMenu.style.display === 'none' || mobileMenu.classList.contains('hidden');
+        const isCurrentlyHidden = mobileMenu.classList.contains('hidden');
         console.log('Menu before toggle:', isCurrentlyHidden ? 'hidden' : 'visible');
         
         if (isCurrentlyHidden) {
@@ -334,6 +332,9 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
           const focusableElements = mobileMenu.querySelectorAll(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
           );
+          
+          if (focusableElements.length === 0) return;
+          
           const firstFocusable = focusableElements[0] as HTMLElement;
           const lastFocusable = focusableElements[focusableElements.length - 1] as HTMLElement;
           
