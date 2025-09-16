@@ -31,7 +31,7 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
-localPort = 40123
+localPort = 40897
 externalPort = 3000
 
 [[ports]]
@@ -44,5 +44,5 @@ packages = ["imagemagick"]
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["npx", "astro", "preview", "--host", "0.0.0.0", "--port", "5000"]
+run = ["npm", "run", "preview"]
 build = ["npm", "run", "build"]
