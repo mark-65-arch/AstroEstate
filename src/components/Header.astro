@@ -25,7 +25,7 @@ const translations = {
 };
 
 const t = translations[lang];
-const currentPath = Astro.url.pathname;
+// const currentPath = Astro.url.pathname;
 const baseUrl = import.meta.env.BASE_URL;
 const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
 ---
@@ -148,11 +148,11 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const header = document.getElementById('main-header');
-    const logo = document.getElementById('logo');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    // const logo = document.getElementById('logo');
+    // const navLinks = document.querySelectorAll('.nav-link');
+    // const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     const langSwitcher = document.getElementById('lang-switcher');
-    const menuButton = document.querySelector('[data-menu-button]');
+    // const menuButton = document.querySelector('[data-menu-button]');
     const toggleButton = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -205,17 +205,21 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       const backdrop = document.getElementById('mobile-menu-backdrop');
       const closeButton = document.getElementById('mobile-menu-close');
       const menuPanel = document.getElementById('mobile-menu-panel');
-      let previousFocus = null;
+      let previousFocus: Element | null = null;
       
       function openMenu() {
         // Save current focus
         previousFocus = document.activeElement;
         
         // Show menu
-        mobileMenu.style.display = 'block';
-        mobileMenu.classList.remove('hidden');
-        mobileMenu.setAttribute('aria-hidden', 'false');
-        toggleButton.setAttribute('aria-expanded', 'true');
+        if (mobileMenu) {
+          mobileMenu.style.display = 'block';
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+        }
+        if (toggleButton) {
+          toggleButton.setAttribute('aria-expanded', 'true');
+        }
         document.body.style.overflow = 'hidden';
         
         // Hide other content from screen readers
@@ -245,10 +249,14 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
         
         // Wait for animation to complete
         setTimeout(() => {
-          mobileMenu.style.display = 'none';
-          mobileMenu.classList.add('hidden');
-          mobileMenu.setAttribute('aria-hidden', 'true');
-          toggleButton.setAttribute('aria-expanded', 'false');
+          if (mobileMenu) {
+            mobileMenu.style.display = 'none';
+            mobileMenu.classList.add('hidden');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+          }
+          if (toggleButton) {
+            toggleButton.setAttribute('aria-expanded', 'false');
+          }
           document.body.style.overflow = '';
           
           // Restore other content visibility
@@ -258,8 +266,8 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
           if (headerContent) headerContent.removeAttribute('aria-hidden');
           
           // Restore focus
-          if (previousFocus) {
-            previousFocus.focus();
+          if (previousFocus && 'focus' in previousFocus) {
+            (previousFocus as HTMLElement).focus();
             previousFocus = null;
           }
         }, 300);
@@ -326,20 +334,20 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
           const focusableElements = mobileMenu.querySelectorAll(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
           );
-          const firstFocusable = focusableElements[0];
-          const lastFocusable = focusableElements[focusableElements.length - 1];
+          const firstFocusable = focusableElements[0] as HTMLElement;
+          const lastFocusable = focusableElements[focusableElements.length - 1] as HTMLElement;
           
           if (e.shiftKey) {
             // Shift + Tab
             if (document.activeElement === firstFocusable) {
               e.preventDefault();
-              lastFocusable.focus();
+              lastFocusable?.focus();
             }
           } else {
             // Tab
             if (document.activeElement === lastFocusable) {
               e.preventDefault();
-              firstFocusable.focus();
+              firstFocusable?.focus();
             }
           }
         }
