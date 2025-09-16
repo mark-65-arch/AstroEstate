@@ -152,6 +152,7 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     // const navLinks = document.querySelectorAll('.nav-link');
     // const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     const langSwitcher = document.getElementById('lang-switcher');
+    const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
     // const menuButton = document.querySelector('[data-menu-button]');
     const toggleButton = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -166,17 +167,23 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
           header.classList.remove('navbar-transparent');
           header.classList.add('navbar-solid');
           
-          // Update language switcher
+          // Update language switchers
           if (langSwitcher) {
             langSwitcher.className = 'bg-primary hover:opacity-90 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-sm';
+          }
+          if (langSwitcherMobile) {
+            langSwitcherMobile.className = 'bg-white/20 hover:bg-white/30 text-white font-semibold py-2 px-2 rounded transition-all duration-200 text-sm backdrop-blur-sm';
           }
         } else {
           header.classList.remove('navbar-solid');
           header.classList.add('navbar-transparent');
           
-          // Update language switcher  
+          // Update language switchers  
           if (langSwitcher) {
             langSwitcher.className = 'bg-white/20 hover:bg-white/30 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-sm backdrop-blur-sm';
+          }
+          if (langSwitcherMobile) {
+            langSwitcherMobile.className = 'bg-white/20 hover:bg-white/30 text-white font-semibold py-2 px-2 rounded transition-all duration-200 text-sm backdrop-blur-sm';
           }
         }
       }
