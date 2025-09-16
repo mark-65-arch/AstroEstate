@@ -57,25 +57,25 @@ const t = translations.en;
         fetchpriority="high"
       />
       <!-- Gradient Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-800/70 to-navy-900/80"></div>
+      <div class="absolute inset-0 bg-black/50"></div>
     </div>
     
     <!-- Hero Content -->
-    <div class="relative z-10 container-custom">
+    <div class="relative z-10 container-custom px-4 py-8">
       <div class="max-w-4xl mx-auto text-center">
         <!-- Hero Card -->
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl border border-white/20">
-          <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/20">
+          <h1 class="hero-title text-white leading-tight">
             {t.hero.title}
           </h1>
-          <p class="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed font-serif">
+          <p class="hero-subtitle leading-relaxed">
             {t.hero.subtitle}
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="#services" class="btn-primary btn-lg px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+          <div class="flex flex-col gap-4 justify-center items-center w-full">
+            <a href="#services" class="btn-primary btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
               🏘️ View Our Services
             </a>
-            <a href="#contact" class="btn-inverted btn-lg px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+            <a href="#contact" class="btn-inverted btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
               📞 Contact Us
             </a>
           </div>
@@ -129,11 +129,11 @@ const t = translations.en;
         <p class="text-lg mb-8">
           {t.cta.subtitle}
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <a href="tel:713-903-7178" class="btn-primary btn-lg px-8 py-4 text-lg font-semibold">
+        <div class="flex flex-col gap-4 justify-center items-center mb-8 px-4 py-6">
+          <a href="tel:713-903-7178" class="btn-primary btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold">
             📞 Call Direct: {t.cta.phone}
           </a>
-          <a href="mailto:mrsoldtx@gmail.com" class="btn-secondary btn-lg px-8 py-4 text-lg font-semibold">
+          <a href="mailto:mrsoldtx@gmail.com" class="btn-secondary btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold">
             ✉️ Email: {t.cta.email}
           </a>
         </div>
