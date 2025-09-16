@@ -48,7 +48,7 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       </div>
       
       <!-- Mobile Controls (Hamburger + Language Switcher) -->
-      <div class="flex items-center space-x-3 sm:flex md:hidden">
+      <div class="flex items-center space-x-3 sm:hidden">
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-toggle" class="p-2 focus:outline-none transition-all duration-300 text-white hover:bg-white/10 rounded-md relative cursor-pointer" data-menu-button aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle mobile menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,12 +103,12 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       <div id="mobile-menu-backdrop" class="fixed inset-0 h-screen w-full bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-in-out cursor-pointer"></div>
       
       <!-- Menu Panel -->
-      <div id="mobile-menu-panel" class="fixed inset-y-0 right-0 w-full max-w-sm bg-white/80 backdrop-blur-md shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
+      <div id="mobile-menu-panel" class="fixed inset-y-0 right-0 w-full max-w-sm bg-navy-900/90 backdrop-blur-md shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
         <div class="flex flex-col h-full">
           <!-- Menu Header -->
-          <div class="flex items-center justify-between p-6 border-b border-gray-800/20">
-            <h2 id="mobile-menu-title" class="text-lg font-semibold text-gray-800">Menu</h2>
-            <button id="mobile-menu-close" class="p-2 -mr-2 text-gray-800 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-md" aria-label="Close menu">
+          <div class="flex items-center justify-between p-6 border-b border-white/20">
+            <h2 id="mobile-menu-title" class="text-lg font-semibold text-white">Menu</h2>
+            <button id="mobile-menu-close" class="p-2 -mr-2 text-white hover:text-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-md" aria-label="Close menu">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
@@ -118,23 +118,23 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
           <!-- Menu Content -->
           <div class="flex-1 p-6 space-y-6">
             <nav class="space-y-4">
-              <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="block text-lg font-medium text-gray-800 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+              <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="block text-lg font-medium text-white hover:text-teal-400 transition-colors duration-200 mobile-nav-link py-2">
                 {t.home}
               </a>
-              <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="block text-lg font-medium text-gray-800 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+              <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="block text-lg font-medium text-white hover:text-teal-400 transition-colors duration-200 mobile-nav-link py-2">
                 {t.services}
               </a>
-              <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="block text-lg font-medium text-gray-800 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+              <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="block text-lg font-medium text-white hover:text-teal-400 transition-colors duration-200 mobile-nav-link py-2">
                 {t.contact}
               </a>
             </nav>
             
             <!-- Mobile Contact Info -->
-            <div class="pt-6 border-t border-gray-800/20 space-y-4">
+            <div class="pt-6 border-t border-white/20 space-y-4">
               <a href="tel:713-903-7178" class="block w-full bg-teal-500 hover:bg-teal-600 text-white px-4 py-3 rounded-lg font-bold text-center transition-all duration-200 transform hover:scale-105 shadow-lg">
                 📞 {t.phone}
               </a>
-              <a href="mailto:mrsoldtx@gmail.com" class="block w-full bg-gray-800/10 hover:bg-gray-800/20 text-gray-800 px-4 py-3 rounded-lg font-medium text-center transition-colors duration-200">
+              <a href="mailto:mrsoldtx@gmail.com" class="block w-full bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-lg font-medium text-center transition-colors duration-200">
                 ✉️ {t.email}
               </a>
             </div>
@@ -202,13 +202,18 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     if (toggleButton && mobileMenu) {
       console.log('Mobile menu toggle button found and event listener added');
       
-      // Ensure menu starts hidden
+      // Ensure menu starts properly hidden
       mobileMenu.classList.add('hidden');
       mobileMenu.setAttribute('aria-hidden', 'true');
+      toggleButton.setAttribute('aria-expanded', 'false');
       
+      // Ensure backdrop and panel start in closed position
       const backdrop = document.getElementById('mobile-menu-backdrop');
-      const closeButton = document.getElementById('mobile-menu-close');
       const menuPanel = document.getElementById('mobile-menu-panel');
+      if (backdrop) backdrop.classList.add('opacity-0');
+      if (menuPanel) menuPanel.classList.add('translate-x-full');
+      
+      const closeButton = document.getElementById('mobile-menu-close');
       let previousFocus: Element | null = null;
       
       function openMenu() {
