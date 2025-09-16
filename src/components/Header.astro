@@ -50,7 +50,7 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       <!-- Mobile Controls (Hamburger + Language Switcher) -->
       <div class="flex items-center space-x-3 md:hidden">
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-toggle" class="p-2 focus:outline-none transition-colors duration-300 text-white hover:bg-white/10 rounded-md" data-menu-button>
+        <button id="mobile-menu-toggle" class="p-2 focus:outline-none transition-colors duration-300 text-white hover:bg-white/10 rounded-md relative" data-menu-button aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle mobile menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -97,18 +97,49 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       </div>
     </div>
 
-    <!-- Mobile Menu (Hidden by default) -->
-    <div id="mobile-menu" class="md:hidden hidden border-t pt-4 pb-4 rounded-b-lg shadow-lg" style="display: none;">
-      <div class="flex flex-col space-y-4">
-        <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="font-medium transition-colors mobile-nav-link">
-          {t.home}
-        </a>
-        <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="font-medium transition-colors mobile-nav-link">
-          {t.services}
-        </a>
-        <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="font-medium transition-colors mobile-nav-link">
-          {t.contact}
-        </a>
+    <!-- Mobile Menu Overlay (Hidden by default) -->
+    <div id="mobile-menu" class="md:hidden fixed inset-0 z-50 hidden" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+      <!-- Backdrop -->
+      <div id="mobile-menu-backdrop" class="fixed inset-0 bg-primary/90 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-in-out"></div>
+      
+      <!-- Menu Panel -->
+      <div id="mobile-menu-panel" class="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex flex-col h-full">
+          <!-- Menu Header -->
+          <div class="flex items-center justify-between p-6 border-b border-gray-200">
+            <h2 id="mobile-menu-title" class="text-lg font-semibold text-gray-900">Menu</h2>
+            <button id="mobile-menu-close" class="p-2 -mr-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-md" aria-label="Close menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Menu Content -->
+          <div class="flex-1 p-6 space-y-6">
+            <nav class="space-y-4">
+              <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="block text-lg font-medium text-gray-900 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+                {t.home}
+              </a>
+              <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="block text-lg font-medium text-gray-900 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+                {t.services}
+              </a>
+              <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="block text-lg font-medium text-gray-900 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+                {t.contact}
+              </a>
+            </nav>
+            
+            <!-- Mobile Contact Info -->
+            <div class="pt-6 border-t border-gray-200 space-y-4">
+              <a href="tel:713-903-7178" class="block w-full bg-teal-500 hover:bg-teal-600 text-white px-4 py-3 rounded-lg font-bold text-center transition-all duration-200 transform hover:scale-105 shadow-lg">
+                📞 {t.phone}
+              </a>
+              <a href="mailto:mrsoldtx@gmail.com" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-3 rounded-lg font-medium text-center transition-colors duration-200">
+                ✉️ {t.email}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -167,30 +198,153 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       updateNavbar();
     }
     
-    // Mobile menu toggle
+    // Mobile menu functionality
     if (toggleButton && mobileMenu) {
       console.log('Mobile menu toggle button found and event listener added');
+      
+      const backdrop = document.getElementById('mobile-menu-backdrop');
+      const closeButton = document.getElementById('mobile-menu-close');
+      const menuPanel = document.getElementById('mobile-menu-panel');
+      let previousFocus = null;
+      
+      function openMenu() {
+        // Save current focus
+        previousFocus = document.activeElement;
+        
+        // Show menu
+        mobileMenu.style.display = 'block';
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        toggleButton.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        
+        // Hide other content from screen readers
+        const mainContent = document.querySelector('main');
+        const headerContent = document.querySelector('#nav-content');
+        if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+        if (headerContent) headerContent.setAttribute('aria-hidden', 'true');
+        
+        // Trigger animations
+        requestAnimationFrame(() => {
+          if (backdrop) backdrop.classList.remove('opacity-0');
+          if (menuPanel) menuPanel.classList.remove('translate-x-full');
+        });
+        
+        // Focus management
+        setTimeout(() => {
+          if (closeButton) closeButton.focus();
+        }, 100);
+        
+        console.log('Menu opened');
+      }
+      
+      function closeMenu() {
+        // Start animations
+        if (backdrop) backdrop.classList.add('opacity-0');
+        if (menuPanel) menuPanel.classList.add('translate-x-full');
+        
+        // Wait for animation to complete
+        setTimeout(() => {
+          mobileMenu.style.display = 'none';
+          mobileMenu.classList.add('hidden');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          toggleButton.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+          
+          // Restore other content visibility
+          const mainContent = document.querySelector('main');
+          const headerContent = document.querySelector('#nav-content');
+          if (mainContent) mainContent.removeAttribute('aria-hidden');
+          if (headerContent) headerContent.removeAttribute('aria-hidden');
+          
+          // Restore focus
+          if (previousFocus) {
+            previousFocus.focus();
+            previousFocus = null;
+          }
+        }, 300);
+        
+        console.log('Menu closed');
+      }
+      
+      // Toggle button click
       toggleButton.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         console.log('Mobile menu button clicked');
         
         const isCurrentlyHidden = mobileMenu.style.display === 'none' || mobileMenu.classList.contains('hidden');
         console.log('Menu before toggle:', isCurrentlyHidden ? 'hidden' : 'visible');
         
         if (isCurrentlyHidden) {
-          // Show menu
-          mobileMenu.style.display = 'block';
-          mobileMenu.classList.remove('hidden');
-          toggleButton.setAttribute('aria-expanded', 'true');
-          console.log('Menu shown');
+          openMenu();
         } else {
-          // Hide menu
-          mobileMenu.style.display = 'none';
-          mobileMenu.classList.add('hidden');
-          toggleButton.setAttribute('aria-expanded', 'false');
-          console.log('Menu hidden');
+          closeMenu();
         }
       });
+      
+      // Close button click
+      if (closeButton) {
+        closeButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          closeMenu();
+        });
+      }
+      
+      // Backdrop click (click outside to close)
+      if (backdrop) {
+        backdrop.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Backdrop clicked - closing menu');
+          closeMenu();
+        });
+      }
+      
+      // Close menu when clicking on navigation links
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          console.log('Navigation link clicked - closing menu');
+          closeMenu();
+        });
+      });
+      
+      // Keyboard event handling
+      document.addEventListener('keydown', function(e) {
+        if (mobileMenu.classList.contains('hidden')) return;
+        
+        if (e.key === 'Escape') {
+          console.log('Escape key pressed - closing menu');
+          closeMenu();
+          return;
+        }
+        
+        // Focus trap
+        if (e.key === 'Tab') {
+          const focusableElements = mobileMenu.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          const firstFocusable = focusableElements[0];
+          const lastFocusable = focusableElements[focusableElements.length - 1];
+          
+          if (e.shiftKey) {
+            // Shift + Tab
+            if (document.activeElement === firstFocusable) {
+              e.preventDefault();
+              lastFocusable.focus();
+            }
+          } else {
+            // Tab
+            if (document.activeElement === lastFocusable) {
+              e.preventDefault();
+              firstFocusable.focus();
+            }
+          }
+        }
+      });
+      
     } else {
       console.log('Mobile menu elements not found:', {
         toggleButton: !!toggleButton,
