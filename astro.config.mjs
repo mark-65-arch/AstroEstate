@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://realestatepro-demo.com',
+  site: 'https://mark-65-arch.github.io',
+  base: '/AstroEstate',
   integrations: [tailwind()],
   i18n: {
     defaultLocale: 'en',
