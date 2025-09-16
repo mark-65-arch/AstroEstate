@@ -30,7 +30,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
 ---
 
-<header id="main-header" class="navbar-sticky navbar-transparent">
+<header id="main-header" class="sticky top-0 z-50 navbar-transparent transition-all duration-300">
   <nav class="container-custom">
     <div class="flex justify-between items-center py-4 transition-all duration-300" id="nav-content">
       <!-- Logo -->
@@ -100,15 +100,15 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     <!-- Mobile Menu Overlay (Hidden by default) -->
     <div id="mobile-menu" class="md:hidden fixed inset-0 z-50 hidden" style="display: none;" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
       <!-- Backdrop -->
-      <div id="mobile-menu-backdrop" class="fixed inset-0 bg-primary/90 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-in-out"></div>
+      <div id="mobile-menu-backdrop" class="fixed inset-0 h-screen w-full bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-in-out cursor-pointer"></div>
       
       <!-- Menu Panel -->
-      <div id="mobile-menu-panel" class="fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out">
+      <div id="mobile-menu-panel" class="fixed inset-y-0 right-0 w-full max-w-sm bg-white/80 backdrop-blur-md shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out">
         <div class="flex flex-col h-full">
           <!-- Menu Header -->
-          <div class="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 id="mobile-menu-title" class="text-lg font-semibold text-gray-900">Menu</h2>
-            <button id="mobile-menu-close" class="p-2 -mr-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-md" aria-label="Close menu">
+          <div class="flex items-center justify-between p-6 border-b border-gray-800/20">
+            <h2 id="mobile-menu-title" class="text-lg font-semibold text-gray-800">Menu</h2>
+            <button id="mobile-menu-close" class="p-2 -mr-2 text-gray-800 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-md" aria-label="Close menu">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
@@ -118,23 +118,23 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
           <!-- Menu Content -->
           <div class="flex-1 p-6 space-y-6">
             <nav class="space-y-4">
-              <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="block text-lg font-medium text-gray-900 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+              <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="block text-lg font-medium text-gray-800 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
                 {t.home}
               </a>
-              <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="block text-lg font-medium text-gray-900 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+              <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="block text-lg font-medium text-gray-800 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
                 {t.services}
               </a>
-              <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="block text-lg font-medium text-gray-900 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
+              <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="block text-lg font-medium text-gray-800 hover:text-primary-600 transition-colors duration-200 mobile-nav-link py-2">
                 {t.contact}
               </a>
             </nav>
             
             <!-- Mobile Contact Info -->
-            <div class="pt-6 border-t border-gray-200 space-y-4">
+            <div class="pt-6 border-t border-gray-800/20 space-y-4">
               <a href="tel:713-903-7178" class="block w-full bg-teal-500 hover:bg-teal-600 text-white px-4 py-3 rounded-lg font-bold text-center transition-all duration-200 transform hover:scale-105 shadow-lg">
                 📞 {t.phone}
               </a>
-              <a href="mailto:mrsoldtx@gmail.com" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-3 rounded-lg font-medium text-center transition-colors duration-200">
+              <a href="mailto:mrsoldtx@gmail.com" class="block w-full bg-gray-800/10 hover:bg-gray-800/20 text-gray-800 px-4 py-3 rounded-lg font-medium text-center transition-colors duration-200">
                 ✉️ {t.email}
               </a>
             </div>
