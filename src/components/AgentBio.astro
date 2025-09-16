@@ -118,9 +118,9 @@ const t = translations[lang];
 
       <!-- Agent Bio and Credentials -->
       <div class="card card-padding">
-        <div class="mb-3">
+        <div class="mb-3 text-center">
           <h3 class="text-3xl font-bold mb-2 text-primary">{t.agent_name}</h3>
-          <div class="flex flex-wrap gap-2 text-sm sm:text-base mb-0">
+          <div class="flex flex-wrap justify-center gap-2 text-sm sm:text-base mb-0">
             <span class="px-2.5 py-1 bg-accent text-white rounded-lg font-medium">{t.experience}</span>
             <span class="px-2.5 py-1 bg-accent text-white rounded-lg font-medium">{t.sales_volume}</span>
             <span class="px-2.5 py-1 bg-accent text-white rounded-lg font-medium">{t.specialty}</span>
@@ -163,7 +163,7 @@ const t = translations[lang];
         </div>
 
         <!-- CTA Button -->
-        <div class="mt-6">
+        <div class="mt-6 text-center">
           <a href={lang === 'en' ? '/en/contact' : '/es/contact'} class="btn-primary btn-lg inline-block">
             {t.contact_agent}
           </a>
