@@ -260,7 +260,7 @@
   }
   
   .navbar-sticky.navbar-solid .logo-text {
-    color: white;
+    color: rgb(30 41 59); /* navy-800 - dark text for readability */
   }
   
   .navbar-sticky.navbar-transparent .logo-subtext {
@@ -268,6 +268,6 @@
   }
   
   .navbar-sticky.navbar-solid .logo-subtext {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgb(51 65 85); /* navy-700 - dark subtext for readability */
   }
 }
