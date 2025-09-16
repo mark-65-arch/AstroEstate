@@ -3,7 +3,8 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://mark-65-arch.github.io',
-  base: process.env.NODE_ENV === 'production' ? '/AstroEstate/' : undefined,
+  base: '/AstroEstate/',
+  output: 'static',
   integrations: [tailwind()],
   i18n: {
     defaultLocale: 'en',
@@ -11,6 +12,10 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: true
     }
+  },
+  build: {
+    assets: 'assets',
+    format: 'directory'
   },
   server: {
     host: '0.0.0.0',

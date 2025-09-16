@@ -154,18 +154,19 @@ const faqSchema = {
     const faqTriggers = document.querySelectorAll('[data-faq-trigger]');
     
     faqTriggers.forEach(trigger => {
-      trigger.addEventListener('click', function() {
-        const targetId = this.getAttribute('data-faq-trigger');
-        const content = document.querySelector(`[data-faq-content="${targetId}"]`);
-        const icon = document.querySelector(`[data-faq-icon="${targetId}"]`);
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      trigger.addEventListener('click', function(event: Event) {
+        const currentTrigger = event.currentTarget as HTMLButtonElement;
+        const targetId = currentTrigger.getAttribute('data-faq-trigger');
+        const content = document.querySelector(`[data-faq-content="${targetId}"]`) as HTMLElement;
+        const icon = document.querySelector(`[data-faq-icon="${targetId}"]`) as HTMLElement;
+        const isExpanded = currentTrigger.getAttribute('aria-expanded') === 'true';
         
         // Close all other FAQs
         faqTriggers.forEach(otherTrigger => {
-          if (otherTrigger !== this) {
+          if (otherTrigger !== currentTrigger) {
             const otherId = otherTrigger.getAttribute('data-faq-trigger');
-            const otherContent = document.querySelector(`[data-faq-content="${otherId}"]`);
-            const otherIcon = document.querySelector(`[data-faq-icon="${otherId}"]`);
+            const otherContent = document.querySelector(`[data-faq-content="${otherId}"]`) as HTMLElement;
+            const otherIcon = document.querySelector(`[data-faq-icon="${otherId}"]`) as HTMLElement;
             
             otherTrigger.setAttribute('aria-expanded', 'false');
             if (otherContent) otherContent.classList.add('hidden');
@@ -175,11 +176,11 @@ const faqSchema = {
         
         // Toggle current FAQ
         if (isExpanded) {
-          this.setAttribute('aria-expanded', 'false');
+          currentTrigger.setAttribute('aria-expanded', 'false');
           if (content) content.classList.add('hidden');
           if (icon) icon.classList.remove('rotate-180');
         } else {
-          this.setAttribute('aria-expanded', 'true');
+          currentTrigger.setAttribute('aria-expanded', 'true');
           if (content) content.classList.remove('hidden');
           if (icon) icon.classList.add('rotate-180');
         }
