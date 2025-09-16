@@ -238,6 +238,15 @@
     color: rgb(51 65 85); /* navy-700 */
   }
   
+  /* Contact link styling */
+  .navbar-sticky.navbar-transparent .contact-link {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .navbar-sticky.navbar-solid .contact-link {
+    color: rgb(51 65 85); /* navy-700 */
+  }
+  
   .navbar-sticky.navbar-transparent .contact-link:hover {
     color: white;
   }
