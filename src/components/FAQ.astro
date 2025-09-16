@@ -1,0 +1,189 @@
+---
+export interface Props {
+  lang: 'en' | 'es';
+}
+
+const { lang } = Astro.props;
+
+const faqData = {
+  en: {
+    title: 'Frequently Asked Questions',
+    subtitle: 'Common questions about Houston real estate services',
+    questions: [
+      {
+        question: 'How do I request a CMA (Comparative Market Analysis) for my Houston home?',
+        answer: 'To request a free CMA for your Houston area property, simply call (713) 903-7178 or fill out our contact form. I will personally analyze recent sales of similar properties in your neighborhood, current market conditions, and your home\'s unique features to provide you with an accurate valuation within 24 hours.',
+        category: 'home-valuation'
+      },
+      {
+        question: 'Where can I find bilingual real estate agents in Cypress and Houston?',
+        answer: 'Mr. Sold Real Estate provides comprehensive bilingual services in English, Spanish, Russian, and Hindi throughout Houston, Cypress, and surrounding areas. With 17+ years of local market experience and $150M+ in successful sales, I offer personalized service to help you buy or sell your home in your preferred language.',
+        category: 'bilingual-services'
+      },
+      {
+        question: 'What areas does Mr. Sold Real Estate serve in Greater Houston?',
+        answer: 'I serve Houston, Cypress, Harris County, Montgomery County, and Fort Bend County. My expertise covers luxury homes, first-time buyer assistance, investment properties, and commercial real estate throughout the Greater Houston metropolitan area including suburbs like Katy, Pearland, The Woodlands, and Sugar Land.',
+        category: 'service-area'
+      },
+      {
+        question: 'How long does it typically take to sell a house in Houston?',
+        answer: 'In the current Houston market, well-priced homes typically sell within 30-45 days. However, this varies by neighborhood, price range, and market conditions. My strategic marketing approach and extensive HAR network help homes sell faster - many of my listings receive offers within the first two weeks.',
+        category: 'selling-process'
+      },
+      {
+        question: 'What makes a luxury home specialist different from a regular realtor?',
+        answer: 'As a luxury home specialist, I provide white-glove service including professional staging consultation, premium marketing materials, discrete showings, and access to exclusive off-market properties. My experience with high-end transactions ensures proper handling of complex negotiations and sophisticated buyer/seller needs.',
+        category: 'luxury-specialist'
+      },
+      {
+        question: 'Do you help first-time home buyers in Houston understand the buying process?',
+        answer: 'Absolutely! I guide first-time buyers through every step: pre-approval, home search, making competitive offers, inspections, and closing. I explain the Houston market dynamics, recommend trusted lenders and inspectors, and ensure you understand all contracts and procedures. My bilingual support makes the process comfortable for diverse buyers.',
+        category: 'first-time-buyers'
+      }
+    ]
+  },
+  es: {
+    title: 'Preguntas Frecuentes',
+    subtitle: 'Preguntas comunes sobre servicios inmobiliarios en Houston',
+    questions: [
+      {
+        question: '¿Cómo solicito un CMA (Análisis Comparativo del Mercado) para mi casa en Houston?',
+        answer: 'Para solicitar un CMA gratuito para su propiedad en el área de Houston, simplemente llame al (713) 903-7178 o complete nuestro formulario de contacto. Personalmente analizaré las ventas recientes de propiedades similares en su vecindario, las condiciones actuales del mercado y las características únicas de su casa para brindarle una valoración precisa en 24 horas.',
+        category: 'home-valuation'
+      },
+      {
+        question: '¿Dónde puedo encontrar agentes inmobiliarios bilingües en Cypress y Houston?',
+        answer: 'Mr. Sold Real Estate ofrece servicios bilingües completos en inglés, español, ruso e hindi en Houston, Cypress y áreas circundantes. Con más de 17 años de experiencia en el mercado local y más de $150M en ventas exitosas, ofrezco servicio personalizado para ayudarlo a comprar o vender su casa en su idioma preferido.',
+        category: 'bilingual-services'
+      },
+      {
+        question: '¿Qué áreas sirve Mr. Sold Real Estate en el Gran Houston?',
+        answer: 'Sirvo Houston, Cypress, el Condado de Harris, el Condado de Montgomery y el Condado de Fort Bend. Mi experiencia abarca casas de lujo, asistencia para compradores primerizos, propiedades de inversión y bienes raíces comerciales en toda el área metropolitana del Gran Houston, incluyendo suburbios como Katy, Pearland, The Woodlands y Sugar Land.',
+        category: 'service-area'
+      },
+      {
+        question: '¿Cuánto tiempo toma típicamente vender una casa en Houston?',
+        answer: 'En el mercado actual de Houston, las casas bien cotizadas típicamente se venden en 30-45 días. Sin embargo, esto varía según el vecindario, rango de precios y condiciones del mercado. Mi enfoque de marketing estratégico y amplia red HAR ayudan a que las casas se vendan más rápido - muchas de mis propiedades reciben ofertas en las primeras dos semanas.',
+        category: 'selling-process'
+      },
+      {
+        question: '¿Qué hace diferente a un especialista en casas de lujo de un agente inmobiliario regular?',
+        answer: 'Como especialista en casas de lujo, proporciono servicio de guante blanco incluyendo consulta de staging profesional, materiales de marketing premium, exhibiciones discretas y acceso a propiedades exclusivas fuera del mercado. Mi experiencia con transacciones de alta gama asegura el manejo adecuado de negociaciones complejas y necesidades sofisticadas de compradores/vendedores.',
+        category: 'luxury-specialist'
+      },
+      {
+        question: '¿Ayudas a compradores primerizos en Houston a entender el proceso de compra?',
+        answer: '¡Absolutamente! Guío a compradores primerizos a través de cada paso: pre-aprobación, búsqueda de casa, hacer ofertas competitivas, inspecciones y cierre. Explico la dinámica del mercado de Houston, recomiendo prestamistas e inspectores de confianza, y me aseguro de que entienda todos los contratos y procedimientos. Mi apoyo bilingüe hace el proceso cómodo para compradores diversos.',
+        category: 'first-time-buyers'
+      }
+    ]
+  }
+};
+
+const faq = faqData[lang];
+
+// Generate FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.questions.map(q => ({
+    "@type": "Question",
+    "name": q.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": q.answer
+    }
+  }))
+};
+---
+
+<section class="section bg-gradient-to-br from-gray-50 to-white">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">
+        {faq.title}
+      </h2>
+      <p class="section-subtitle">
+        {faq.subtitle}
+      </p>
+    </div>
+    
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-4">
+        {faq.questions.map((item, index) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <button 
+              class="w-full px-8 py-6 text-left font-semibold text-lg text-secondary-900 hover:bg-gray-50 flex items-center justify-between transition-colors duration-200"
+              data-faq-trigger={`faq-${index}`}
+              aria-expanded="false"
+              aria-controls={`faq-content-${index}`}
+            >
+              <span class="pr-4">{item.question}</span>
+              <svg 
+                class="w-5 h-5 text-primary-600 transform transition-transform duration-200 flex-shrink-0" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                data-faq-icon={`faq-${index}`}
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div 
+              id={`faq-content-${index}`}
+              class="hidden px-8 pb-6"
+              data-faq-content={`faq-${index}`}
+            >
+              <p class="text-secondary-700 leading-relaxed">
+                {item.answer}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<!-- FAQ Interaction Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqTriggers = document.querySelectorAll('[data-faq-trigger]');
+    
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-faq-trigger');
+        const content = document.querySelector(`[data-faq-content="${targetId}"]`);
+        const icon = document.querySelector(`[data-faq-icon="${targetId}"]`);
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        // Close all other FAQs
+        faqTriggers.forEach(otherTrigger => {
+          if (otherTrigger !== this) {
+            const otherId = otherTrigger.getAttribute('data-faq-trigger');
+            const otherContent = document.querySelector(`[data-faq-content="${otherId}"]`);
+            const otherIcon = document.querySelector(`[data-faq-icon="${otherId}"]`);
+            
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            if (otherContent) otherContent.classList.add('hidden');
+            if (otherIcon) otherIcon.classList.remove('rotate-180');
+          }
+        });
+        
+        // Toggle current FAQ
+        if (isExpanded) {
+          this.setAttribute('aria-expanded', 'false');
+          if (content) content.classList.add('hidden');
+          if (icon) icon.classList.remove('rotate-180');
+        } else {
+          this.setAttribute('aria-expanded', 'true');
+          if (content) content.classList.remove('hidden');
+          if (icon) icon.classList.add('rotate-180');
+        }
+      });
+    });
+  });
+</script>

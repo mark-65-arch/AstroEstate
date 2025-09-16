@@ -10,7 +10,7 @@ export interface Props {
 
 const { title, description, lang, canonical, ogImage, schema } = Astro.props;
 
-const siteName = 'RealEstate Pro';
+const siteName = 'Mr. Sold Real Estate';
 const defaultOgImage = '/og-image.jpg';
 const currentURL = Astro.url.href;
 const baseURL = Astro.site ? Astro.site.origin : Astro.url.origin;
@@ -20,6 +20,64 @@ const canonicalURL = canonical || `${baseURL}${Astro.url.pathname}`;
 const pathWithoutLang = Astro.url.pathname.replace(/^\/(en|es)/, '');
 const enURL = `${baseURL}/en${pathWithoutLang}`;
 const esURL = `${baseURL}/es${pathWithoutLang}`;
+
+// Local Business Schema Object
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Mr. Sold Real Estate L.L.C.",
+  "alternateName": "Enrique Escobar - MR. SOLD",
+  "description": "Houston bilingual real estate agent with 17+ years experience and $150M+ in sales. Luxury home specialist serving Houston, Cypress, and surrounding areas with English, Spanish, Russian, and Hindi support.",
+  "url": baseURL,
+  "telephone": "+1-713-903-7178",
+  "email": "mrsoldtx@gmail.com",
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "17110 Cypress Glade Dr",
+      "addressLocality": "Cypress",
+      "addressRegion": "TX",
+      "postalCode": "77429",
+      "addressCountry": "US"
+    },
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "17626 Belwood Park Ln",
+      "addressLocality": "Cypress",
+      "addressRegion": "TX",
+      "postalCode": "77433",
+      "addressCountry": "US"
+    }
+  ],
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "29.7604",
+      "longitude": "-95.3698"
+    },
+    "geoRadius": "80000"
+  },
+  "areaServed": ["Houston", "Cypress", "Harris County", "Montgomery County", "Fort Bend County", "Texas"],
+  "knowsLanguage": ["English", "Spanish", "Russian", "Hindi"],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "Real Estate License",
+    "recognizedBy": "Texas Real Estate Commission (TREC)",
+    "identifier": "9008299"
+  },
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Houston Association of Realtors (HAR)"
+  },
+  "broker": {
+    "@type": "RealEstateAgent",
+    "name": "Kari A King",
+    "identifier": "573857"
+  },
+  "priceRange": "$$-$$$$",
+  "slogan": "Get It Sold with Mr. Sold Real Estate - Bilingual Service in English & Español"
+};
 ---
 
 <!-- Basic Meta Tags -->
@@ -61,34 +119,5 @@ const esURL = `${baseURL}/es${pathWithoutLang}`;
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 )}
 
-<!-- Default Real Estate Business Schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  "name": "RealEstate Pro",
-  "description": "Professional real estate services in English and Spanish",
-  "url": baseURL,
-  "telephone": "+1-555-123-4567",
-  "email": "info@realestatepro.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "123 Main Street",
-    "addressLocality": "Houston",
-    "addressRegion": "TX",
-    "postalCode": "77001",
-    "addressCountry": "US"
-  },
-  "serviceArea": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": "29.7604",
-      "longitude": "-95.3698"
-    },
-    "geoRadius": "50000"
-  },
-  "areaServed": ["Houston", "Harris County", "Texas"],
-  "knowsLanguage": ["English", "Spanish"]
-}
-</script>
+<!-- Local Business Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />

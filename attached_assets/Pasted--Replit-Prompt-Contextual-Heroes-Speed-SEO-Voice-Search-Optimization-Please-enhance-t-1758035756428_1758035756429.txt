@@ -1,0 +1,32 @@
+### 🚀 Replit Prompt: Contextual Heroes + Speed, SEO & Voice-Search Optimization
+
+Please enhance the project with these final requirements before launch:
+
+1. Contextual Hero Sections  
+   - Home: keep suburban-Houston image + dark overlay + “Search Properties” CTA  
+   - Services: swap to “agent consulting client” photo + same overlay + “Our Services” heading  
+   - Contact: swap to warm office or Houston map-pin graphic + same overlay + “Get In Touch” form  
+
+2. Image Optimization for Performance  
+   - Convert all hero and listing images to modern formats (WebP/AVIF) with JPG fallbacks  
+   - Generate responsive `<picture>`/`srcset` variants for desktop, tablet, mobile  
+   - Add explicit width/height attributes and lazy-load non-critical images  
+   - Compress assets (under 100 KB hero images) and serve via CDN or Astro’s image pipeline  
+
+3. Text & Markup for SEO  
+   - Use semantic HTML: one `<h1>` per page, structured `<h2>`/`<h3>` for sections  
+   - Write concise, keyword-rich headlines and subheads (e.g. “Houston Bilingual Realtor” + locale)  
+   - Populate meta title, description, and Open Graph tags for each page  
+   - Add local-business schema (JSON-LD) with Mr. Sold’s name, address, phone, license, service area  
+
+4. Voice-Search Readiness  
+   - Include an FAQ section with 4–6 question-answer pairs using natural language (e.g. “How do I request a CMA in Houston?”)  
+   - Mark FAQs with FAQPage schema (JSON-LD)  
+   - Sprinkle long-tail, conversational phrases in headings and body copy (e.g. “Where can I find bilingual realtors in Cypress?”)  
+
+5. Verification & Testing  
+   - Run Lighthouse audit: aim for 90+ performance, accessibility, best practices, and SEO  
+   - Test mobile speed and voice-search retrieval in native assistant emulators  
+   - Confirm all images load quickly, text is crawlable, and FAQ answers appear in Rich Results previews  
+
+Deliver these optimizations while preserving Tailwind utilities, existing layout, and HAR widget placeholders.  
