@@ -48,3 +48,62 @@ Preferred communication style: Simple, everyday language.
 - **Static output**: Optimized for deployment to CDNs and static hosting platforms
 - **Preview functionality**: Built-in preview server for production builds
 - **Type-safe builds**: Enforced TypeScript checking in the build process
+
+## Deployment Configuration & Troubleshooting
+
+### Astro Configuration for Dual Environment Support
+The `astro.config.mjs` is configured to handle both local development and GitHub Pages deployment:
+
+```javascript
+export default defineConfig({
+  site: 'https://mark-65-arch.github.io',
+  base: process.env.NODE_ENV === 'production' ? '/AstroEstate/' : '/',
+  output: 'static',
+  build: {
+    assets: 'assets',
+    format: 'directory'
+  }
+});
+```
+
+**Key Configuration Points:**
+- **Base Path**: Uses `/AstroEstate/` for GitHub Pages, `/` for local development
+- **Output**: Always set to `static` for GitHub Pages compatibility
+- **Assets**: Uses `assets` folder to avoid potential Jekyll conflicts
+
+### Common GitHub Pages Issues & Solutions
+
+#### Issue 1: Conflicting GitHub Actions Workflows
+**Problem**: Multiple deployment workflows can conflict, causing 404 errors
+**Solution**: 
+- Keep only `deploy.yml` (Astro-specific workflow)
+- Remove or disable `static.yml` (generic static deployment)
+- Ensure only one deployment workflow is active
+
+#### Issue 2: Base Path Configuration Errors  
+**Problem**: Hardcoded base path breaks local development
+**Solution**: Use environment-conditional base path as shown in config above
+
+#### Issue 3: TypeScript Build Errors
+**Problem**: Strict TypeScript checking prevents deployment
+**Common Issues**:
+- Event handlers with `this` context need proper typing
+- Use `event.currentTarget as HTMLElement` instead of implicit `this`
+- Add type assertions for DOM queries: `querySelector() as HTMLElement`
+
+#### Issue 4: Server Connection Loss After Config Changes
+**Problem**: Local server disconnects when base path changes
+**Solution**: Restart the development workflow after configuration changes
+
+### GitHub Pages Deployment Checklist
+1. ✅ Repository name matches base path in config (`/AstroEstate/`)
+2. ✅ Only `deploy.yml` workflow is active (disable/delete `static.yml`)
+3. ✅ GitHub Pages source set to "GitHub Actions" (not branch)
+4. ✅ Build completes with 0 TypeScript errors
+5. ✅ Local development server works with `/` base path
+
+### Development Workflow Best Practices
+- **Local Testing**: Always verify both `npm run dev` and `npm run build && npm run preview` work
+- **Configuration Changes**: Restart development server after modifying `astro.config.mjs`
+- **TypeScript Errors**: Fix all TypeScript errors before deployment
+- **Asset References**: Use `import.meta.env.BASE_URL` for proper path resolution
