@@ -197,15 +197,23 @@
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   }
   
-  .navbar-sticky.navbar-solid .nav-link,
-  .navbar-sticky.navbar-solid .mobile-nav-link {
+  .navbar-sticky.navbar-solid .nav-link {
     color: rgb(51 65 85); /* navy-700 */
     transition: color 0.3s ease;
   }
   
-  .navbar-sticky.navbar-solid .nav-link:hover,
-  .navbar-sticky.navbar-solid .mobile-nav-link:hover {
+  .navbar-sticky.navbar-solid .nav-link:hover {
     color: var(--color-primary-hover);
+  }
+
+  /* Mobile menu links should always be white regardless of navbar state */
+  .navbar-sticky.navbar-solid .mobile-nav-link {
+    color: white !important;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-sticky.navbar-solid .mobile-nav-link:hover {
+    color: var(--color-accent-light) !important;
   }
   
   .navbar-sticky.navbar-transparent [data-menu-button] {
@@ -237,8 +245,8 @@
   }
   
   .navbar-sticky.navbar-solid #mobile-menu {
-    border-color: rgb(226 232 240); /* gray-200 */
-    background-color: rgba(255, 255, 255, 1); /* fully opaque white */
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(15, 23, 42, 1); /* fully opaque navy-900 - keep dark */
     backdrop-filter: blur(12px);
     position: relative;
     z-index: 1000;
