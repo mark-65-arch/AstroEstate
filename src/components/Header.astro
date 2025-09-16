@@ -49,7 +49,7 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       
       <!-- Mobile Menu Button -->
       <div class="md:hidden">
-        <button id="mobile-menu-toggle" class="text-white hover:text-teal-300 focus:outline-none transition-colors duration-300" data-menu-button>
+        <button id="mobile-menu-toggle" class="focus:outline-none transition-colors duration-300" data-menu-button>
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -57,12 +57,12 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       </div>
 
       <!-- Contact Info (Desktop Only) -->
-      <div class="hidden lg:flex items-center space-x-6 text-white/90 text-sm">
-        <a href="tel:713-903-7178" class="hover:text-white transition-colors flex items-center space-x-1">
+      <div class="hidden lg:flex items-center space-x-6 text-sm contact-info">
+        <a href="tel:713-903-7178" class="transition-colors flex items-center space-x-1 contact-link">
           <span>📞</span>
           <span>{t.phone}</span>
         </a>
-        <a href="mailto:mrsoldtx@gmail.com" class="hover:text-white transition-colors flex items-center space-x-1">
+        <a href="mailto:mrsoldtx@gmail.com" class="transition-colors flex items-center space-x-1 contact-link">
           <span>✉️</span>
           <span>{t.email}</span>
         </a>
@@ -70,13 +70,13 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
 
       <!-- Desktop Navigation Links -->
       <div class="hidden md:flex items-center space-x-8" id="nav-links">
-        <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="font-medium transition-colors duration-300 nav-link">
           {t.home}
         </a>
-        <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="font-medium transition-colors duration-300 nav-link">
           {t.services}
         </a>
-        <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="font-medium transition-colors duration-300 nav-link">
           {t.contact}
         </a>
       </div>
@@ -92,13 +92,13 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     <!-- Mobile Menu (Hidden by default) -->
     <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 pt-4 pb-4">
       <div class="flex flex-col space-y-4">
-        <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="font-medium transition-colors mobile-nav-link">
           {t.home}
         </a>
-        <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="font-medium transition-colors mobile-nav-link">
           {t.services}
         </a>
-        <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="font-medium transition-colors mobile-nav-link">
           {t.contact}
         </a>
       </div>

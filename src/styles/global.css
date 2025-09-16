@@ -228,4 +228,21 @@
   .navbar-sticky.navbar-solid #mobile-menu {
     border-color: rgb(226 232 240); /* gray-200 */
   }
+
+  /* Contact info styling */
+  .navbar-sticky.navbar-transparent .contact-info {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .navbar-sticky.navbar-solid .contact-info {
+    color: rgb(51 65 85); /* navy-700 */
+  }
+  
+  .navbar-sticky.navbar-transparent .contact-link:hover {
+    color: white;
+  }
+  
+  .navbar-sticky.navbar-solid .contact-link:hover {
+    color: var(--color-primary-hover);
+  }
 }
