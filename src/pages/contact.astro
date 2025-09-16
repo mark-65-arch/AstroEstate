@@ -1,0 +1,216 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import HarIdxLeadCapture from '../components/HarIdxLeadCapture.astro';
+
+const translations = {
+  en: {
+    title: 'Contact Us - Mr. Sold Real Estate',
+    description: 'Contact Enrique "MR. SOLD" Escobar - 17 years experience, $150M+ in sales, luxury home specialist serving Houston area.',
+    hero: {
+      title: 'Contact Mr. Sold Real Estate',
+      subtitle: 'Ready to help you with your real estate needs - Bilingual Service Available'
+    },
+    form: {
+      title: 'Send us a message',
+      name: 'Full Name',
+      email: 'Email Address',
+      phone: 'Phone Number',
+      message: 'Message',
+      submit: 'Send Message'
+    },
+    info: {
+      title: 'Get in Touch',
+      mainPhone: '713-534-9674',
+      directPhone: '(713) 903-7178',
+      email: 'mrsoldtx@gmail.com',
+      address1: '17110 Cypress Glade Dr, Cypress, TX 77429',
+      address2: '17626 Belwood Park Ln, Cypress, TX 77433',
+      license: 'TREC License #9008299',
+      broker: 'Broker: Kari A King (573857)',
+      languages: ['English', 'Español', 'Russian', 'Hindi'],
+      hours: 'Available 7 days a week for consultation'
+    }
+  }
+};
+
+const t = translations.en;
+---
+
+<MainLayout title={t.title} description={t.description} lang="en">
+  <!-- Hero Section -->
+  <section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero-contact.jpg`}
+        alt="Contact Mr. Sold Real Estate - Professional real estate consultation"
+        class="w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-800/70 to-navy-900/80"></div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="relative z-10 container-custom px-4 py-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Hero Card -->
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/20">
+          <h1 class="hero-title text-white leading-tight">
+            {t.hero.title}
+          </h1>
+          <p class="hero-subtitle leading-relaxed">
+            {t.hero.subtitle}
+          </p>
+          <div class="flex flex-col gap-4 justify-center items-center w-full">
+            <a href="#contact-form" class="btn-primary btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+              📞 Get In Touch
+            </a>
+            <a href="tel:(713) 903-7178" class="btn-inverted btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+              📱 Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Information & Form Section -->
+  <section id="contact-form" class="section bg-white scroll-mt-24">
+    <div class="container-custom">
+      <div class="section-header">
+        <h2 class="section-title">
+          {t.info.title}
+        </h2>
+        <p class="section-subtitle">
+          Reach out to Enrique "MR. SOLD" Escobar for professional real estate services
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <!-- Contact Information -->
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-xl p-6 lg:p-8">
+            <h3 class="text-xl font-bold text-navy-900 mb-4">Contact Information</h3>
+            
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-navy-900">Main Phone</p>
+                  <a href={`tel:${t.info.mainPhone}`} class="text-primary-600 hover:text-primary-700">
+                    {t.info.mainPhone}
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-navy-900">Direct Phone</p>
+                  <a href={`tel:${t.info.directPhone}`} class="text-primary-600 hover:text-primary-700">
+                    {t.info.directPhone}
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-navy-900">Email</p>
+                  <a href={`mailto:${t.info.email}`} class="text-primary-600 hover:text-primary-700">
+                    {t.info.email}
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-navy-900">Office Locations</p>
+                  <p class="text-gray-600">{t.info.address1}</p>
+                  <p class="text-gray-600">{t.info.address2}</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-navy-900">Availability</p>
+                  <p class="text-gray-600">{t.info.hours}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-gray-200">
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="font-semibold text-navy-900">Languages:</span>
+                {t.info.languages.map((language, index) => (
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+                    {language}
+                  </span>
+                ))}
+              </div>
+              <p class="text-sm text-gray-600">{t.info.license}</p>
+              <p class="text-sm text-gray-600">{t.info.broker}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <div class="bg-gray-50 rounded-xl p-6 lg:p-8">
+            <h3 class="text-xl font-bold text-navy-900 mb-4">{t.form.title}</h3>
+            <HarIdxLeadCapture lang="en" type="contact" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section (Placeholder) -->
+  <section class="section bg-gray-100">
+    <div class="container-custom">
+      <div class="section-header">
+        <h2 class="section-title">Our Service Area</h2>
+        <p class="section-subtitle">
+          Serving the Greater Houston Area with Professional Real Estate Services
+        </p>
+      </div>
+      
+      <div class="bg-white rounded-xl shadow-lg p-6 lg:p-8">
+        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
+          <div class="text-center">
+            <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+            </svg>
+            <p class="text-gray-600 font-medium">Interactive Map Coming Soon</p>
+            <p class="text-gray-500 text-sm">Houston Area Service Locations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

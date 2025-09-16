@@ -1,0 +1,168 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import HarIdxLeadCapture from '../components/HarIdxLeadCapture.astro';
+
+const translations = {
+  en: {
+    title: 'Our Services - Mr. Sold Real Estate',
+    description: 'Expert real estate services with 17 years experience and $150M+ in sales. Specializing in luxury homes with bilingual support.',
+    hero: {
+      title: 'Our Services',
+      subtitle: 'Professional real estate solutions with Mr. Sold Real Estate'
+    },
+    services: [
+      {
+        title: 'Home Buying',
+        description: 'Expert guidance through every step of the home buying process with 17 years of local market knowledge',
+        features: ['Market Analysis & Pricing', 'Luxury Home Search', 'Bilingual Support (EN/ES/RU/HI)', 'Expert Negotiation', 'Closing Coordination']
+      },
+      {
+        title: 'Home Selling',
+        description: 'Maximize your property value with proven strategies that generated $150M+ in sales',
+        features: ['Professional Property Valuation', 'Strategic Marketing Plan', 'Luxury Home Staging', 'HAR/MLS Listing Management', 'Transaction Oversight']
+      },
+      {
+        title: 'CMA Request (Comparative Market Analysis)',
+        description: 'Get a comprehensive market analysis to determine your home\'s current market value',
+        features: ['Detailed Property Analysis', 'Recent Sales Comparison', 'Market Trends Report', 'Pricing Strategy', 'Free Consultation']
+      },
+      {
+        title: 'Luxury Home Specialist',
+        description: 'Specialized expertise in high-end properties throughout the Houston area',
+        features: ['Luxury Market Expertise', 'High-End Property Network', 'Discrete Marketing', 'Premium Service Experience', 'Investment Grade Properties']
+      }
+    ],
+    cta: {
+      title: 'Ready to Get Started?',
+      subtitle: 'Contact Enrique "MR. SOLD" Escobar today',
+      phone: '(713) 903-7178',
+      email: 'mrsoldtx@gmail.com'
+    }
+  }
+};
+
+const t = translations.en;
+---
+
+<MainLayout title={t.title} description={t.description} lang="en">
+  <!-- Hero Section -->
+  <section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero-services.jpg`}
+        alt="Professional real estate services - Mr. Sold Real Estate team helping clients"
+        class="w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-800/70 to-navy-900/80"></div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="relative z-10 container-custom px-4 py-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Hero Card -->
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/20">
+          <h1 class="hero-title text-white leading-tight">
+            {t.hero.title}
+          </h1>
+          <p class="hero-subtitle leading-relaxed">
+            {t.hero.subtitle}
+          </p>
+          <div class="flex flex-col gap-4 justify-center items-center w-full">
+            <a href="#services" class="btn-primary btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+              🏠 View Our Services
+            </a>
+            <a href="/contact" class="btn-inverted btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+              📞 Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section bg-white scroll-mt-24">
+    <div class="container-custom">
+      <div class="section-header">
+        <h2 class="section-title">
+          Professional Real Estate Services
+        </h2>
+        <p class="section-subtitle">
+          Comprehensive solutions with 17+ years of experience and $150M+ in successful transactions
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        {t.services.map((service, index) => (
+          <div class="service-card bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8 border border-gray-100">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  {index + 1}
+                </div>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl lg:text-2xl font-bold text-navy-900 mb-3">
+                  {service.title}
+                </h3>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  {service.description}
+                </p>
+                <ul class="space-y-2">
+                  {service.features.map((feature) => (
+                    <li class="flex items-center gap-2 text-gray-700">
+                      <svg class="w-4 h-4 text-primary-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-primary-50">
+    <div class="container-custom">
+      <div class="section-header">
+        <h2 class="section-title">
+          {t.cta.title}
+        </h2>
+        <p class="section-subtitle">
+          {t.cta.subtitle}
+        </p>
+      </div>
+      
+      <div class="max-w-2xl mx-auto">
+        <HarIdxLeadCapture lang="en" type="contact" />
+      </div>
+      
+      <div class="mt-8 text-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto">
+          <a href={`tel:${t.cta.phone}`} class="btn-primary btn-lg flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+            </svg>
+            {t.cta.phone}
+          </a>
+          <a href={`mailto:${t.cta.email}`} class="btn-secondary btn-lg flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+            </svg>
+            Email Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
