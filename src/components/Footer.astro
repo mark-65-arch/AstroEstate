@@ -69,6 +69,7 @@ const translations = {
 };
 
 const t = translations[lang];
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <footer class="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white">
@@ -103,22 +104,22 @@ const t = translations[lang];
       <div class="lg:col-span-1">
         <h4 class="text-xl font-bold text-white mb-6 font-heading">{t.quickLinks}</h4>
         <div class="space-y-4">
-          <a href={lang === 'en' ? '/en' : '/es'} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
+          <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
             {t.home}
           </a>
-          <a href={lang === 'en' ? '/en/services' : '/es/services'} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
+          <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
             {t.services}
           </a>
-          <a href={lang === 'en' ? '/en#search' : '/es#search'} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
+          <a href={lang === 'en' ? `${baseUrl}en#search` : `${baseUrl}es#search`} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
             {t.searchProperties}
           </a>
-          <a href={lang === 'en' ? '/en/about' : '/es/about'} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
+          <a href={lang === 'en' ? `${baseUrl}en/about` : `${baseUrl}es/about`} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
             {t.aboutUs}
           </a>
-          <a href={lang === 'en' ? '/en#featured' : '/es#featured'} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
+          <a href={lang === 'en' ? `${baseUrl}en#featured` : `${baseUrl}es#featured`} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
             {t.testimonials}
           </a>
-          <a href={lang === 'en' ? '/en#lead-capture' : '/es#lead-capture'} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
+          <a href={lang === 'en' ? `${baseUrl}en#lead-capture` : `${baseUrl}es#lead-capture`} class="block text-gray-300 hover:text-teal-400 transition-all duration-200 hover:translate-x-1 font-serif">
             {t.contactUs}
           </a>
         </div>
@@ -256,10 +257,10 @@ const t = translations[lang];
           © {new Date().getFullYear()} {t.company}. {t.copyright}
         </p>
         <div class="flex space-x-6 text-sm">
-          <a href={lang === 'en' ? '/en/privacy' : '/es/privacy'} class="text-gray-300 hover:text-teal-400 transition-colors duration-200 font-serif">
+          <a href={lang === 'en' ? `${baseUrl}en/privacy` : `${baseUrl}es/privacy`} class="text-gray-300 hover:text-teal-400 transition-colors duration-200 font-serif">
             {t.privacyPolicy}
           </a>
-          <a href={lang === 'en' ? '/en/terms' : '/es/terms'} class="text-gray-300 hover:text-teal-400 transition-colors duration-200 font-serif">
+          <a href={lang === 'en' ? `${baseUrl}en/terms` : `${baseUrl}es/terms`} class="text-gray-300 hover:text-teal-400 transition-colors duration-200 font-serif">
             {t.termsOfService}
           </a>
         </div>

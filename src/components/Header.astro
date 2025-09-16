@@ -27,6 +27,7 @@ const translations = {
 const t = translations[lang];
 const currentPath = Astro.url.pathname;
 const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : currentPath.replace('/es', '/en');
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <header id="main-header" class="navbar-sticky navbar-transparent">
@@ -34,7 +35,7 @@ const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : cu
     <div class="flex justify-between items-center py-4 transition-all duration-300" id="nav-content">
       <!-- Logo -->
       <div class="flex items-center">
-        <a href={lang === 'en' ? '/en' : '/es'} class="flex items-center space-x-3 transition-colors duration-300" id="logo">
+        <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="flex items-center space-x-3 transition-colors duration-300" id="logo">
           <!-- Logo Placeholder -->
           <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
             <span class="text-white font-bold text-sm">MS</span>
@@ -69,13 +70,13 @@ const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : cu
 
       <!-- Desktop Navigation Links -->
       <div class="hidden md:flex items-center space-x-8" id="nav-links">
-        <a href={lang === 'en' ? '/en' : '/es'} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
           {t.home}
         </a>
-        <a href={lang === 'en' ? '/en/services' : '/es/services'} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
           {t.services}
         </a>
-        <a href={lang === 'en' ? '/en/contact' : '/es/contact'} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="text-white hover:text-teal-300 font-medium transition-colors duration-300 nav-link">
           {t.contact}
         </a>
       </div>
@@ -91,13 +92,13 @@ const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : cu
     <!-- Mobile Menu (Hidden by default) -->
     <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 pt-4 pb-4">
       <div class="flex flex-col space-y-4">
-        <a href={lang === 'en' ? '/en' : '/es'} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
           {t.home}
         </a>
-        <a href={lang === 'en' ? '/en/services' : '/es/services'} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en/services` : `${baseUrl}es/services`} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
           {t.services}
         </a>
-        <a href={lang === 'en' ? '/en/contact' : '/es/contact'} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
+        <a href={lang === 'en' ? `${baseUrl}en/contact` : `${baseUrl}es/contact`} class="text-white hover:text-teal-300 font-medium transition-colors mobile-nav-link">
           {t.contact}
         </a>
       </div>

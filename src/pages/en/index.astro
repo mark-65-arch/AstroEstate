@@ -37,20 +37,20 @@ const t = translations.en;
       <picture>
         <source 
           media="(min-width: 1280px)" 
-          srcset="/assets/images/hero-house-large.webp"
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-large.webp`}
           type="image/webp"
         />
         <source 
           media="(min-width: 768px)" 
-          srcset="/assets/images/hero-house-medium.webp"
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-medium.webp`}
           type="image/webp"
         />
         <source 
-          srcset="/assets/images/hero-house-small.webp"
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-small.webp`}
           type="image/webp"
         />
         <img 
-          src="/assets/images/hero-house-original.jpg"
+          src={`${import.meta.env.BASE_URL}assets/images/hero-house-original.jpg`}
           alt="Beautiful modern Houston area home with stone accent, white garage door, and professional landscaping - Mr. Sold Real Estate luxury property specialist"
           class="w-full h-full object-cover"
           loading="eager"
