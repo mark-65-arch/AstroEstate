@@ -26,8 +26,8 @@ const translations = {
 
 const t = translations[lang];
 const currentPath = Astro.url.pathname;
-const switchedPath = lang === 'en' ? `/es${currentPath.replace('/en', '')}` : currentPath.replace('/es', '/en');
 const baseUrl = import.meta.env.BASE_URL;
+const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
 ---
 
 <header id="main-header" class="navbar-sticky navbar-transparent">
