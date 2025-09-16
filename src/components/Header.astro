@@ -97,7 +97,7 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     </div>
 
     <!-- Mobile Menu (Hidden by default) -->
-    <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 pt-4 pb-4">
+    <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 pt-4 pb-4" style="display: none;">
       <div class="flex flex-col space-y-4">
         <a href={lang === 'en' ? `${baseUrl}en` : `${baseUrl}es`} class="font-medium transition-colors mobile-nav-link">
           {t.home}
@@ -168,12 +168,32 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     
     // Mobile menu toggle
     if (toggleButton && mobileMenu) {
-      toggleButton.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
+      console.log('Mobile menu toggle button found and event listener added');
+      toggleButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Mobile menu button clicked');
         
-        // Update ARIA attributes for accessibility
-        const isExpanded = !mobileMenu.classList.contains('hidden');
-        toggleButton.setAttribute('aria-expanded', isExpanded.toString());
+        const isCurrentlyHidden = mobileMenu.style.display === 'none' || mobileMenu.classList.contains('hidden');
+        console.log('Menu before toggle:', isCurrentlyHidden ? 'hidden' : 'visible');
+        
+        if (isCurrentlyHidden) {
+          // Show menu
+          mobileMenu.style.display = 'block';
+          mobileMenu.classList.remove('hidden');
+          toggleButton.setAttribute('aria-expanded', 'true');
+          console.log('Menu shown');
+        } else {
+          // Hide menu
+          mobileMenu.style.display = 'none';
+          mobileMenu.classList.add('hidden');
+          toggleButton.setAttribute('aria-expanded', 'false');
+          console.log('Menu hidden');
+        }
+      });
+    } else {
+      console.log('Mobile menu elements not found:', {
+        toggleButton: !!toggleButton,
+        mobileMenu: !!mobileMenu
       });
     }
     
