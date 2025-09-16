@@ -202,6 +202,10 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     if (toggleButton && mobileMenu) {
       console.log('Mobile menu toggle button found and event listener added');
       
+      // Ensure menu starts hidden
+      mobileMenu.classList.add('hidden');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      
       const backdrop = document.getElementById('mobile-menu-backdrop');
       const closeButton = document.getElementById('mobile-menu-close');
       const menuPanel = document.getElementById('mobile-menu-panel');
@@ -280,11 +284,14 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
         console.log('Mobile menu button clicked');
         
         const isCurrentlyHidden = mobileMenu.classList.contains('hidden');
-        console.log('Menu before toggle:', isCurrentlyHidden ? 'hidden' : 'visible');
+        const ariaExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+        console.log('Menu state - hidden class:', isCurrentlyHidden, 'aria-expanded:', ariaExpanded);
         
         if (isCurrentlyHidden) {
+          console.log('Opening menu');
           openMenu();
         } else {
+          console.log('Closing menu');
           closeMenu();
         }
       });
