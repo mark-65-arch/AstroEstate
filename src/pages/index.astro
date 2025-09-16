@@ -1,21 +1,156 @@
 ---
-// Root redirect page for i18n routing
+import MainLayout from '../layouts/MainLayout.astro';
+import HarIdxSearchWidget from '../components/HarIdxSearchWidget.astro';
+import HarIdxFeaturedListings from '../components/HarIdxFeaturedListings.astro';
+import TrustSocialProof from '../components/TrustSocialProof.astro';
+import HarIdxLeadCapture from '../components/HarIdxLeadCapture.astro';
+import AgentBio from '../components/AgentBio.astro';
+import FAQ from '../components/FAQ.astro';
+
+const translations = {
+  en: {
+    title: 'Get It Sold with Mr. Sold Real Estate - Houston TX',
+    description: 'Bilingual real estate services in English & Español. 17+ years experience, $150M+ in sales. Luxury Home Specialist serving Houston area.',
+    hero: {
+      title: 'Get It Sold with Mr. Sold Real Estate',
+      subtitle: 'Bilingual Service in English & Español',
+      cta: 'Search Properties'
+    },
+    featured: {
+      title: 'Featured Properties',
+      subtitle: 'Discover our most popular listings'
+    },
+    contact: {
+      title: 'Ready to Get Started?',
+      subtitle: 'Contact us today to find your perfect home'
+    }
+  }
+};
+
+const t = translations.en;
 ---
 
-<script>
-  // Redirect to English version
-  window.location.href = 'en';
-</script>
+<MainLayout title={t.title} description={t.description} lang="en">
+  <!-- Hero Section -->
+  <section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <picture>
+        <source 
+          media="(min-width: 1280px)" 
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-large.webp`}
+          type="image/webp"
+        />
+        <source 
+          media="(min-width: 768px)" 
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-medium.webp`}
+          type="image/webp"
+        />
+        <source 
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-small.webp`}
+          type="image/webp"
+        />
+        <img 
+          src={`${import.meta.env.BASE_URL}assets/images/hero-house-original.jpg`}
+          alt="Beautiful modern Houston area home with stone accent, white garage door, and professional landscaping - Mr. Sold Real Estate luxury property specialist"
+          class="w-full h-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </picture>
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-800/70 to-navy-900/80"></div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="relative z-10 container-custom px-4 py-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <!-- Hero Card -->
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/20">
+          <h1 class="hero-title text-white leading-tight">
+            {t.hero.title}
+          </h1>
+          <p class="hero-subtitle leading-relaxed">
+            {t.hero.subtitle}
+          </p>
+          <div class="flex flex-col gap-4 justify-center items-center w-full">
+            <a href="#search" class="btn-primary btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+              🏠 {t.hero.cta}
+            </a>
+            <a href="#featured" class="btn-inverted btn-lg w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+              📋 View Listings
+            </a>
+          </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="mt-16 animate-bounce">
+          <svg class="w-6 h-6 mx-auto text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<meta http-equiv="refresh" content="0; url=en">
+  <!-- Agent Bio Section -->
+  <AgentBio lang="en" />
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Redirecting...</title>
-  </head>
-  <body>
-    <p>Redirecting to <a href="en">English version</a>...</p>
-  </body>
-</html>
+  <!-- Property Search Widget Section -->
+  <section id="search" class="section bg-white scroll-mt-24">
+    <div class="container-custom">
+      <div class="section-header">
+        <h2 class="section-title">
+          Property Search
+        </h2>
+        <p class="section-subtitle">
+          Find properties with our advanced search tools
+        </p>
+      </div>
+      
+      <!-- HAR IDX Search Widget -->
+      <HarIdxSearchWidget lang="en" />
+    </div>
+  </section>
+
+  <!-- Featured Properties Section -->
+  <section id="featured" class="section bg-gray-50 scroll-mt-24">
+    <div class="container-custom">
+      <div class="section-header">
+        <h2 class="section-title">
+          {t.featured.title}
+        </h2>
+        <p class="section-subtitle">
+          {t.featured.subtitle}
+        </p>
+      </div>
+      
+      <!-- HAR IDX Featured Listings Widget -->
+      <HarIdxFeaturedListings lang="en" count={6} />
+    </div>
+  </section>
+
+  <!-- Trust & Social Proof Section -->
+  <TrustSocialProof lang="en" />
+
+  <!-- FAQ Section -->
+  <FAQ lang="en" />
+
+  <!-- Lead Capture Section -->
+  <section id="lead-capture" class="section bg-primary-50">
+    <div class="container-custom">
+      <div class="section-header">
+        <h2 class="section-title">
+          {t.contact.title}
+        </h2>
+        <p class="section-subtitle">
+          {t.contact.subtitle}
+        </p>
+      </div>
+      
+      <div class="max-w-2xl mx-auto">
+        <HarIdxLeadCapture lang="en" type="contact" />
+      </div>
+    </div>
+  </section>
+</MainLayout>
