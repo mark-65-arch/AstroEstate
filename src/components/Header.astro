@@ -30,7 +30,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
 ---
 
-<header id="main-header" class="sticky top-0 z-50 navbar-transparent transition-all duration-300">
+<header id="main-header" class="sticky top-0 z-50 bg-gradient-to-r from-navy-900/95 via-navy-800/90 to-navy-900/95 backdrop-blur-md transition-all duration-300">
   <nav class="container-custom">
     <div class="flex justify-between items-center py-4 transition-all duration-300" id="nav-content">
       <!-- Logo -->
@@ -98,7 +98,7 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     </div>
 
     <!-- Mobile Menu Overlay (Hidden by default) -->
-    <div id="mobile-menu" class="md:hidden fixed inset-0 z-[60] hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+    <div id="mobile-menu" class="md:hidden fixed inset-0 z-[60] hidden opacity-0 pointer-events-none" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
       <!-- Backdrop -->
       <div id="mobile-menu-backdrop" class="fixed inset-0 h-screen w-full bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-in-out cursor-pointer"></div>
       
@@ -202,14 +202,18 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
     if (toggleButton && mobileMenu) {
       console.log('Mobile menu toggle button found and event listener added');
       
-      // Ensure menu starts properly hidden
+      // Get menu elements
+      const backdrop = document.getElementById('mobile-menu-backdrop');
+      const menuPanel = document.getElementById('mobile-menu-panel');
+      
+      // Force menu to start completely hidden
       mobileMenu.classList.add('hidden');
+      mobileMenu.classList.add('opacity-0');
+      mobileMenu.classList.add('pointer-events-none');
       mobileMenu.setAttribute('aria-hidden', 'true');
       toggleButton.setAttribute('aria-expanded', 'false');
       
       // Ensure backdrop and panel start in closed position
-      const backdrop = document.getElementById('mobile-menu-backdrop');
-      const menuPanel = document.getElementById('mobile-menu-panel');
       if (backdrop) backdrop.classList.add('opacity-0');
       if (menuPanel) menuPanel.classList.add('translate-x-full');
       
@@ -223,6 +227,8 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
         // Show menu
         if (mobileMenu) {
           mobileMenu.classList.remove('hidden');
+          mobileMenu.classList.remove('opacity-0');
+          mobileMenu.classList.remove('pointer-events-none');
           mobileMenu.setAttribute('aria-hidden', 'false');
         }
         if (toggleButton) {
@@ -259,6 +265,8 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
         setTimeout(() => {
           if (mobileMenu) {
             mobileMenu.classList.add('hidden');
+            mobileMenu.classList.add('opacity-0');
+            mobileMenu.classList.add('pointer-events-none');
             mobileMenu.setAttribute('aria-hidden', 'true');
           }
           if (toggleButton) {
@@ -288,16 +296,16 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
         e.stopPropagation();
         console.log('Mobile menu button clicked');
         
-        const isCurrentlyHidden = mobileMenu.classList.contains('hidden');
-        const ariaExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-        console.log('Menu state - hidden class:', isCurrentlyHidden, 'aria-expanded:', ariaExpanded);
+        // Use aria-expanded as the source of truth
+        const isCurrentlyOpen = toggleButton.getAttribute('aria-expanded') === 'true';
+        console.log('Menu state - aria-expanded:', isCurrentlyOpen);
         
-        if (isCurrentlyHidden) {
-          console.log('Opening menu');
-          openMenu();
-        } else {
+        if (isCurrentlyOpen) {
           console.log('Closing menu');
           closeMenu();
+        } else {
+          console.log('Opening menu');
+          openMenu();
         }
       });
       
