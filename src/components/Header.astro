@@ -48,15 +48,15 @@ const switchedPath = lang === 'en' ? `${baseUrl}es` : `${baseUrl}en`;
       </div>
       
       <!-- Mobile Controls (Hamburger + Language Switcher) -->
-      <div class="flex items-center space-x-3 md:hidden">
+      <div class="flex items-center space-x-3 sm:flex md:hidden">
         <!-- Mobile Menu Button -->
-        <button id="mobile-menu-toggle" class="p-2 focus:outline-none transition-colors duration-300 text-white hover:bg-white/10 rounded-md relative" data-menu-button aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle mobile menu">
+        <button id="mobile-menu-toggle" class="p-2 focus:outline-none transition-all duration-300 text-white hover:bg-white/10 rounded-md relative cursor-pointer" data-menu-button aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle mobile menu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
         <!-- Language Switcher for Mobile -->
-        <a href={switchedPath} class="bg-white/20 hover:bg-white/30 text-white font-semibold py-2 px-3 rounded-lg transition-all duration-200 text-sm backdrop-blur-sm" id="lang-switcher-mobile">
+        <a href={switchedPath} class="bg-white/20 hover:bg-white/30 text-white font-semibold py-2 px-2 rounded transition-all duration-200 text-sm backdrop-blur-sm" id="lang-switcher-mobile">
           {t.language}
         </a>
       </div>
