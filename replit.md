@@ -152,6 +152,25 @@ base: process.env.DEPLOY_BASE || '/',
 **Cause**: Replit proxy needs allowedHosts bypass
 **Verify**: Ensure `vite.server.allowedHosts: true` is set (already correct in this project)
 
+#### Issue: GitHub Pages Assets Not Loading After Replit Config
+**Cause**: After configuring for Replit with environment variables, GitHub Pages deployment doesn't get the required DEPLOY_BASE and SITE_URL environment variables
+**Solution**: 
+1. Update `.github/workflows/deploy.yml` to include environment variables:
+   ```yaml
+   - name: Install, build, and upload your site output
+     uses: withastro/action@v4
+     with:
+       path: .
+       node-version: 20
+       package-manager: npm
+     env:
+       SITE_URL: https://mark-65-arch.github.io
+       DEPLOY_BASE: /AstroEstate/
+   ```
+2. Check for hardcoded asset paths and convert to BASE_URL:
+   - Replace `src="/assets/..."` with `src={`${import.meta.env.BASE_URL}assets/...`}`
+   - Replace `src="/attached_assets/..."` with `src={`${import.meta.env.BASE_URL}attached_assets/...`}`
+
 ### Deployment Configuration
 - **Type**: autoscale (for static sites)
 - **Build**: `["npm", "run", "build"]`  
