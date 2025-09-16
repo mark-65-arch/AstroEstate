@@ -107,3 +107,57 @@ export default defineConfig({
 - **Configuration Changes**: Restart development server after modifying `astro.config.mjs`
 - **TypeScript Errors**: Fix all TypeScript errors before deployment
 - **Asset References**: Use `import.meta.env.BASE_URL` for proper path resolution
+
+## Replit Import Optimization
+
+### Quick Import Checklist for GitHub Astro Projects
+When importing this or similar Astro projects from GitHub to Replit, follow this streamlined process:
+
+1. **Install Dependencies**: Run `npm install` immediately after import
+2. **Fix Replit Configuration**: Update `astro.config.mjs` for Replit compatibility
+3. **Fix Preview Port**: Update `package.json` preview script for port 5000
+4. **Test Development**: Restart workflow and verify site loads
+5. **Configure Deployment**: Set up autoscale deployment with build/preview commands
+
+### Critical Configuration Fixes Required
+
+#### astro.config.mjs Changes
+```javascript
+// Replace hardcoded GitHub Pages config with environment variables
+site: process.env.SITE_URL || undefined,
+base: process.env.DEPLOY_BASE || '/',
+```
+
+#### package.json Changes  
+```javascript
+// Ensure preview runs on port 5000 for Replit deployment
+"preview": "astro preview --host 0.0.0.0 --port 5000"
+```
+
+### Common Import Issues & Solutions
+
+#### Issue: "astro: not found" Error
+**Cause**: Dependencies not installed after GitHub import
+**Solution**: Run `npm install` before starting workflow
+
+#### Issue: Wrong Base Path in Production
+**Cause**: astro.config.mjs hardcoded for GitHub Pages (`/AstroEstate/`)
+**Fix**: Use environment variables for flexible deployment targets
+
+#### Issue: Preview Port Mismatch
+**Cause**: Default `astro preview` uses port 4321, Replit expects 5000
+**Fix**: Add `--host 0.0.0.0 --port 5000` to preview script
+
+#### Issue: Host Header Verification
+**Cause**: Replit proxy needs allowedHosts bypass
+**Verify**: Ensure `vite.server.allowedHosts: true` is set (already correct in this project)
+
+### Deployment Configuration
+- **Type**: autoscale (for static sites)
+- **Build**: `["npm", "run", "build"]`  
+- **Run**: `["npm", "run", "preview"]`
+
+### Time-Saving Tips
+- Check for existing Replit-compatible configuration before making changes
+- Always test both `npm run build` and `npm run preview` after configuration fixes
+- Use environment variables for dual GitHub Pages/Replit deployment support
