@@ -245,4 +245,29 @@
   .navbar-sticky.navbar-solid .contact-link:hover {
     color: var(--color-primary-hover);
   }
+
+  /* Logo styling */
+  .navbar-sticky.navbar-transparent .logo-bg {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .navbar-sticky.navbar-solid .logo-bg {
+    background-color: var(--color-primary);
+  }
+  
+  .navbar-sticky.navbar-transparent .logo-text {
+    color: white;
+  }
+  
+  .navbar-sticky.navbar-solid .logo-text {
+    color: white;
+  }
+  
+  .navbar-sticky.navbar-transparent .logo-subtext {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .navbar-sticky.navbar-solid .logo-subtext {
+    color: rgba(255, 255, 255, 0.9);
+  }
 }
