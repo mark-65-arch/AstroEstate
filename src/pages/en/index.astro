@@ -38,21 +38,21 @@ const t = translations.en;
       <picture>
         <source 
           media="(min-width: 1280px)" 
-          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-large.webp`}
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-large.webp 1x`}
           type="image/webp"
         />
         <source 
           media="(min-width: 768px)" 
-          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-medium.webp`}
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-medium.webp 1x, ${import.meta.env.BASE_URL}assets/images/hero-house-large.webp 2x`}
           type="image/webp"
         />
         <source 
-          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-small.webp`}
+          srcset={`${import.meta.env.BASE_URL}assets/images/hero-house-small.webp 1x, ${import.meta.env.BASE_URL}assets/images/hero-house-medium.webp 2x`}
           type="image/webp"
         />
         <img 
-          src={`${import.meta.env.BASE_URL}assets/images/hero-house-original.jpg`}
-          alt="Beautiful modern Houston area home with stone accent, white garage door, and professional landscaping - Mr. Sold Real Estate luxury property specialist"
+          src={`${import.meta.env.BASE_URL}assets/images/hero-house-new-original.jpg`}
+          alt="Beautiful single-story home for sale with manicured lawn and 'For Sale' sign - Professional real estate services by Mr. Sold Real Estate Houston"
           class="w-full h-full object-cover brightness-110 contrast-105"
           loading="eager"
           fetchpriority="high"
